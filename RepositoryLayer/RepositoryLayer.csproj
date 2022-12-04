@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Datas\" />
+    <None Remove="Repositories\" />
+    <None Remove="Repositories\Interfaces\" />
+    <None Remove="Exceptions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Datas\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Repositories\Interfaces\" />
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DomainLayer\DomainLayer.csproj" />
+  </ItemGroup>
+</Project>

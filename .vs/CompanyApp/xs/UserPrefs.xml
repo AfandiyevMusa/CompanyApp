@@ -1,0 +1,7 @@
+﻿<Properties StartupConfiguration="{9203A2CB-E6B2-454D-AA4C-4A841C1757EA}|Default">
+  <MonoDevelop.Ide.ItemProperties.CompanyApp PreferredExecutionTarget="MonoDevelop.Default" FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.RepositoryLayer FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.DomainLayer FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.ServiceLayer FirstBuild="True" />
+  <MultiItemStartupConfigurations />
+</Properties>
