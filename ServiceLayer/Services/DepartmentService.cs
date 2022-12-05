@@ -49,7 +49,7 @@ namespace ServiceLayer.Services
             return _DepartRepo.GetAll(n => n.Name.ToLower().Contains(word.ToLower()));
         }
 
-        public string Update(int id, Department department)
+        public List<Department> Update(int id, Department department)
         {
             var res = _DepartRepo.Update(department);
 
@@ -59,14 +59,14 @@ namespace ServiceLayer.Services
                 {
                     eachDepartment.Name = department.Name;
                     eachDepartment.Capacity = department.Capacity;
-                    return eachDepartment.Id + eachDepartment.Name + eachDepartment.Capacity;
                 }
                 else
                 {
-                    return "Please, choose correct ID: ";
+                    
                 }
             }
-            return " ";
+            return res;
+            
         }
     }
 }

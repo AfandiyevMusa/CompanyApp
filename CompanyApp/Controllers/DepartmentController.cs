@@ -81,7 +81,8 @@ namespace CompanyApp.Controllers
                         };
 						if (department is null) throw new ArgumentNullException();
                         var res = _departmentService.Update(newDepID, department);
-						if (res is null) throw new ArgumentNullException();
+						
+                        if (res is null) throw new ArgumentNullException();
 						ConsoleColor.Cyan.WriteWithColor("Updated!!!");
                     }
 					else
@@ -178,7 +179,7 @@ namespace CompanyApp.Controllers
             }
         }
 
-		public void Search()
+		public void Search() //(6)
 		{
 			try
 			{
@@ -189,14 +190,7 @@ namespace CompanyApp.Controllers
 
                 foreach (var department in res)
                 {
-					if (department != null)
-					{
                         ConsoleColor.Green.WriteWithColor($"Id: {department.Id}, Name: {department.Name}, Capacity: {department.Capacity}");
-                    }
-					else
-					{
-						throw new Exception();
-					}
                 }
             }
 			catch (Exception ex)
