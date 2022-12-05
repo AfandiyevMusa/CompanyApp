@@ -16,7 +16,7 @@ namespace ServiceLayer.Services
             _DepartRepo = new DepartmentRepository();
         }
 
-        public Department Creat(Department department)
+        public Department Create(Department department)
         {
             department.Id = _cnt;
             _DepartRepo.Add(department);

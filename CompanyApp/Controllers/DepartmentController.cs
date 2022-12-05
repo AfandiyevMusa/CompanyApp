@@ -37,7 +37,7 @@ namespace CompanyApp.Controllers
 
                 if (isParse)
 				{
-					var result = _departmentService.Creat(department);
+					var result = _departmentService.Create(department);
 
                     ConsoleColor.Green.WriteWithColor($"Id: {result.Id}, Name: {result.Name}, Capacity: {result.Capacity}");
                 }
@@ -149,7 +149,7 @@ namespace CompanyApp.Controllers
 						goto ID;
 					}
 
-                    ConsoleColor.Green.WriteWithColor($"Id: {result.Id}, Name: {result.Name}, Seat count: {result.Capacity}");
+                    ConsoleColor.Green.WriteWithColor($"Id: {result.Id}, Name: {result.Name}, Capacity: {result.Capacity}");
                 }
                 else
                 {

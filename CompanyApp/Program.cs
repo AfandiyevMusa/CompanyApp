@@ -5,6 +5,7 @@ using DomainLayer.Entities;
 using ServiceLayer.Helpers;
 
 DepartmentController departmentController = new();
+EmployeeController employeeController = new();
 
 while (true)
 {
@@ -39,13 +40,13 @@ while (true)
                 departmentController.Search();
                 break;
             case 7:
-
+                employeeController.Create();
                 break;
             case 8:
 
                 break;
             case 9:
-
+                employeeController.GetAllByID();
                 break;
             case 10:
 

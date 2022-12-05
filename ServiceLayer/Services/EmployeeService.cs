@@ -1,5 +1,7 @@
 ﻿using System;
 using DomainLayer.Entities;
+using RepositoryLayer.Datas;
+using RepositoryLayer.Exceptions;
 using RepositoryLayer.Repositories;
 using ServiceLayer.Services.Interfaces;
 
@@ -8,16 +10,24 @@ namespace ServiceLayer.Services
     public class EmployeeService : IEmployeeService
     {
         private readonly EmployeeRepository _empRepo;
-        private int _cnt = 1;
+        private int _cnt;
 
         public EmployeeService()
         {
             _empRepo = new EmployeeRepository();
         }
 
-        public Employee Creat(Employee employee)
+        public Employee Create(Employee employee)
         {
-            throw new NotImplementedException();
+            //foreach (var eachDep in AppDbContext<Department>.values)
+            //{
+                //if (eachDep is null) throw new ArgumentNullException();
+                employee.Id = _cnt;
+                _empRepo.Add(employee);
+                _cnt++;
+                return employee;
+            //}
+            //return employee;
         }
 
         public void Delete(int id)
@@ -25,7 +35,18 @@ namespace ServiceLayer.Services
             throw new NotImplementedException();
         }
 
-        public List<Employee> GetAllEmpByAge(int age)
+        public List<Employee> GetAllEmpByAge(int? age)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Employee> GetAllEmpByDepID(int? id)
+        {
+            if (id is null) throw new ArgumentNullException();
+            return _empRepo.GetAll(n => n.Id == id);
+        }
+
+        public List<Employee> GetAllEmpByDepName(string depName)
         {
             throw new NotImplementedException();
         }

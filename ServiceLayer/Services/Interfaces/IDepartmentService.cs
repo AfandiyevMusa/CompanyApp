@@ -5,7 +5,7 @@ namespace ServiceLayer.Services.Interfaces
 {
 	public interface IDepartmentService
 	{
-		Department Creat(Department department);
+		Department Create(Department department);
         List<Department> Update(int id, Department department);
 		void Delete(int? id);
 		Department GetDepByID(int? id);

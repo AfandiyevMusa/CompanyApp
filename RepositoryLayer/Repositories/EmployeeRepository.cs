@@ -1,5 +1,6 @@
 ﻿using System;
 using DomainLayer.Entities;
+using RepositoryLayer.Datas;
 using RepositoryLayer.Repositories.Interfaces;
 
 namespace RepositoryLayer.Repositories
@@ -8,27 +9,29 @@ namespace RepositoryLayer.Repositories
     {
         public void Add(Employee entity)
         {
-            throw new NotImplementedException();
+            if (entity == null) throw new ArgumentNullException();
+            AppDbContext<Employee>.values.Add(entity);
         }
 
         public void Delete(Employee entity)
         {
-            throw new NotImplementedException();
+            if (entity == null) throw new ArgumentNullException();
+            AppDbContext<Employee>.values.Remove(entity);
         }
 
         public Employee Get(Predicate<Employee> predicate)
         {
-            throw new NotImplementedException();
+            return AppDbContext<Employee>.values.Find(predicate);
         }
 
         public List<Employee> GetAll(Predicate<Employee> predicate)
         {
-            throw new NotImplementedException();
+            return predicate == null ? AppDbContext<Employee>.values : AppDbContext<Employee>.values.FindAll(predicate);
         }
 
         public List<Department> Update(Employee entity)
         {
-            throw new NotImplementedException();
+            return AppDbContext<Department>.values;
         }
     }
 }
