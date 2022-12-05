@@ -9,7 +9,7 @@ namespace ServiceLayer.Services
 	public class DepartmentService : IDepartmentService
 	{
         private readonly DepartmentRepository _DepartRepo;
-        private int _cnt = 1;
+        private static int _cnt;
 
         public DepartmentService()
         {
@@ -49,9 +49,24 @@ namespace ServiceLayer.Services
             return _DepartRepo.GetAll(n => n.Name.ToLower().Contains(word.ToLower()));
         }
 
-        public Department Update(int id, Department department)
+        public string Update(int id, Department department)
         {
-            throw new NotImplementedException();
+            var res = _DepartRepo.Update(department);
+
+            foreach (var eachDepartment in res)
+            {
+                if(eachDepartment.Id == id)
+                {
+                    eachDepartment.Name = department.Name;
+                    eachDepartment.Capacity = department.Capacity;
+                    return eachDepartment.Id + eachDepartment.Name + eachDepartment.Capacity;
+                }
+                else
+                {
+                    return "Please, choose correct ID: ";
+                }
+            }
+            return " ";
         }
     }
 }

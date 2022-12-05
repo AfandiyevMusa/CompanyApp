@@ -24,7 +24,7 @@ while (true)
                 departmentController.Create();
                 break;
             case 2:
-                
+                departmentController.Update();
                 break;
             case 3:
                 departmentController.Delete();
@@ -36,7 +36,7 @@ while (true)
                 departmentController.GetAll();
                 break;
             case 6:
-
+                departmentController.Search();
                 break;
             case 7:
 

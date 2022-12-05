@@ -29,9 +29,9 @@ namespace RepositoryLayer.Repositories
             return predicate == null ? AppDbContext<Department>.values : AppDbContext<Department>.values.FindAll(predicate);
         }
 
-        public void Update(Department entity)
+        public List<Department> Update(Department entity)
         {
-            throw new NotImplementedException();
+            return AppDbContext<Department>.values;
         }
     }
 }

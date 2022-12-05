@@ -26,7 +26,7 @@ namespace RepositoryLayer.Repositories
             throw new NotImplementedException();
         }
 
-        public void Update(Employee entity)
+        public List<Department> Update(Employee entity)
         {
             throw new NotImplementedException();
         }

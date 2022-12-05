@@ -1,7 +1,51 @@
 ﻿<Properties StartupConfiguration="{9203A2CB-E6B2-454D-AA4C-4A841C1757EA}|Default">
-  <MonoDevelop.Ide.ItemProperties.CompanyApp PreferredExecutionTarget="MonoDevelop.Default" FirstBuild="True" />
-  <MonoDevelop.Ide.ItemProperties.RepositoryLayer FirstBuild="True" />
-  <MonoDevelop.Ide.ItemProperties.DomainLayer FirstBuild="True" />
-  <MonoDevelop.Ide.ItemProperties.ServiceLayer FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.CompanyApp PreferredExecutionTarget="MonoDevelop.Default" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CompanyApp/Controllers/DepartmentController.cs">
+    <Files>
+      <File FileName="CompanyApp/Controllers/DepartmentController.cs" Line="189" Column="15" />
+      <File FileName="ServiceLayer/Services/DepartmentService.cs" Line="69" Column="24" />
+      <File FileName="RepositoryLayer/Repositories/DepartmentRepository.cs" Line="1" Column="1" />
+      <File FileName="CompanyApp/Program.cs" />
+      <File FileName="RepositoryLayer/Repositories/Interfaces/IRepository.cs" />
+      <File FileName="ServiceLayer/Services/Interfaces/IDepartmentService.cs" />
+      <File FileName="DomainLayer/Entities/Employee.cs" />
+      <File FileName="ServiceLayer/Helpers/Helper.cs" />
+      <File FileName="RepositoryLayer/Repositories/EmployeeRepository.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CompanyApp" expanded="True">
+            <Node name="CompanyApp" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+            </Node>
+            <Node name="DomainLayer" expanded="True">
+              <Node name="Common" expanded="True" />
+              <Node name="Entities" expanded="True" />
+            </Node>
+            <Node name="RepositoryLayer" expanded="True">
+              <Node name="Datas" expanded="True" />
+              <Node name="Exceptions" expanded="True" />
+              <Node name="Repositories" expanded="True">
+                <Node name="Interfaces" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="ServiceLayer" expanded="True">
+              <Node name="Helpers" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="Interfaces" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
 </Properties>
