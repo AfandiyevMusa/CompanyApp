@@ -64,7 +64,7 @@ while (true)
                 employeeController.Search();
                 break;
             case 15:
-
+                employeeController.GetCount();
                 break;
             default:
                 break;

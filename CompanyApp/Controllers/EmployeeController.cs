@@ -249,6 +249,21 @@ namespace CompanyApp.Controllers
             }
         }
 
+        public void GetCount()
+        {
+            try
+            {
+                int? res = _empService.GetAllEmpCount();
+                if (res is 0) throw new NotFoundException("Employee isn't exist!");
+                ConsoleColor.Cyan.WriteWithColor($"All Employees Count is {res}.");
+                
+            }
+            catch (Exception ex)
+            {
+                ConsoleColor.DarkRed.WriteWithColor(ex.Message);
+            }
+        }
+
     }
 }
 

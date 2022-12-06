@@ -1,14 +1,11 @@
 ﻿<Properties StartupConfiguration="{9203A2CB-E6B2-454D-AA4C-4A841C1757EA}|Default">
-  <MonoDevelop.Ide.ItemProperties.CompanyApp PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="RepositoryLayer/Repositories/DepartmentRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ServiceLayer/Services/EmployeeService.cs">
     <Files>
-      <File FileName="CompanyApp/Program.cs" Line="43" Column="38" />
-      <File FileName="RepositoryLayer/Repositories/DepartmentRepository.cs" Line="27" Column="61" />
-      <File FileName="ServiceLayer/Services/DepartmentService.cs" Line="1" Column="1" />
+      <File FileName="CompanyApp/Program.cs" Line="1" Column="1" />
+      <File FileName="CompanyApp/Controllers/EmployeeController.cs" Line="1" Column="1" />
+      <File FileName="ServiceLayer/Services/EmployeeService.cs" Line="68" Column="34" />
+      <File FileName="RepositoryLayer/Repositories/EmployeeRepository.cs" Line="1" Column="1" />
+      <File FileName="ServiceLayer/Services/Interfaces/IEmployeeService.cs" Line="16" Column="46" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,6 +14,7 @@
             <Node name="CompanyApp" expanded="True">
               <Node name="Dependencies" expanded="True" />
               <Node name="Controllers" expanded="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
             <Node name="DomainLayer" expanded="True">
               <Node name="Common" expanded="True" />
@@ -33,7 +31,6 @@
               <Node name="Helpers" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="Interfaces" expanded="True" />
-                <Node name="DepartmentService.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -41,6 +38,11 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.CompanyApp PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

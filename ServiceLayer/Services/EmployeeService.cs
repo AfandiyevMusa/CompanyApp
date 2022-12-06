@@ -65,6 +65,12 @@ namespace ServiceLayer.Services
             return _empRepo.GetAll(n => n.Name.ToLower().Contains(searchName.ToLower()) && n.Surname.ToLower().Contains(searchSurname.ToLower()));
         }
 
+        public int GetAllEmpCount()
+        {
+            //if(employee is null) throw new ArgumentNullException();
+            return _empRepo.GetAll(null).Count;
+        }
+
         public Employee Update(int id, Employee employee)
         {
             throw new NotImplementedException();

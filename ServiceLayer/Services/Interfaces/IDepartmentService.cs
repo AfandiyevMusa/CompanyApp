@@ -13,4 +13,3 @@ namespace ServiceLayer.Services.Interfaces
 		List<Department> Search(string word);
 	}
 }
-
