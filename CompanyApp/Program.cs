@@ -46,7 +46,7 @@ while (true)
 
                 break;
             case 9:
-                //employeeController.GetAllByID();
+                employeeController.GetEmpByID();
                 break;
             case 10:
 

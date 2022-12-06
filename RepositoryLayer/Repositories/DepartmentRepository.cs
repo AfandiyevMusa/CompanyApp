@@ -31,6 +31,7 @@ namespace RepositoryLayer.Repositories
 
         public List<Department> Update(Department entity)
         {
+            if (entity == null) throw new ArgumentNullException();
             return AppDbContext<Department>.values;
         }
     }

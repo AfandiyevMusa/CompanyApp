@@ -10,7 +10,7 @@ namespace ServiceLayer.Services
 	public class DepartmentService : IDepartmentService
 	{
         private readonly DepartmentRepository _DepartRepo;
-        private static int _cnt;
+        private static int _cnt = 1;
 
         public DepartmentService()
         {
@@ -36,10 +36,6 @@ namespace ServiceLayer.Services
                     eachDepartment.Name = department.Name;
                     eachDepartment.Capacity = department.Capacity;
                 }
-                else
-                {
-
-                }
             }
             return res;
         }
@@ -49,7 +45,7 @@ namespace ServiceLayer.Services
             if (id is null) throw new ArgumentNullException();
             Department department = GetDepByID(id);
 
-            if (department is null) throw new NotFoundException("Department not found");
+            if (department is null) throw new NotFoundException("Department not found!");
             _DepartRepo.Delete(department);
         }
 

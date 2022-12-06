@@ -17,6 +17,7 @@ namespace CompanyApp.Controllers
         public EmployeeController()
         {
             _empService = new EmployeeService();
+            _depService = new DepartmentService();
         }
 
         public void Create() //(7)
@@ -33,7 +34,6 @@ namespace CompanyApp.Controllers
 
                     ConsoleColor.Yellow.WriteWithColor("Enter employee age: ");
                 Age: string? age = Console.ReadLine();
-
                     int newAge;
                     bool isParse = int.TryParse(age, out newAge);
 
@@ -41,13 +41,11 @@ namespace CompanyApp.Controllers
                     string? address = Console.ReadLine();
 
                     ConsoleColor.Yellow.WriteWithColor("Enter employee department ID: ");
-                    string? id = Console.ReadLine();
-
+                ID: string? id = Console.ReadLine();
                     int newID;
                     bool isParseID = int.TryParse(id, out newID);
 
                     Department department = _depService.GetDepByID(newID);
-
 
                     Employee employee = new()
                     {
@@ -74,6 +72,7 @@ namespace CompanyApp.Controllers
                         else
                         {
                             ConsoleColor.DarkRed.WriteWithColor("Please, add correct ID: ");
+                            goto ID;
                         }
                         
                     }
@@ -95,39 +94,64 @@ namespace CompanyApp.Controllers
             }
         }
 
-        //public void GetAllByID() //(9)
-        //{
-        //    try
-        //    {
-        //        ConsoleColor.Yellow.WriteWithColor("Enter department ID: ");
-        //    ID: string depID = Console.ReadLine();
-        //        int newDepID;
-        //        bool isParse = int.TryParse(depID, out newDepID);
+        public void GetEmpByID() //(9)
+        {
+            try
+            {
+                ConsoleColor.Yellow.WriteWithColor("Enter department ID: ");
+            ID: string depID = Console.ReadLine();
+                int newDepID;
+                bool isParse = int.TryParse(depID, out newDepID);
 
-        //        if (isParse)
-        //        {
-        //            var result = _empService.GetDepByID(newDepID);
-        //            if (result is null)
-        //            {
-        //                ConsoleColor.DarkRed.WriteWithColor("Employee not found!!!");
-        //                goto ID;
-        //            }
+                if (isParse)
+                {
+                    var result = _empService.GetEmpByID(newDepID);
+                    if (result is null)
+                    {
+                        ConsoleColor.DarkRed.WriteWithColor("Employee not found!!!");
+                        goto ID;
+                    }
 
-        //            ConsoleColor.Green.WriteWithColor($"Id: {result.Id}, Name: {result.Name}, Surname: {result.Surname}, Address: {result.Address}");
-        //        }
-        //        else
-        //        {
-        //            ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
-        //            goto ID;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //}
+                    ConsoleColor.Green.WriteWithColor($"" +
+                        $"Id: {result.Id}, " +
+                        $"Name: {result.Name}, " +
+                        $"Surname: {result.Surname}, " +
+                        $"Age: {result.Age} " +
+                        $"Address: {result.Address}, " +
+                        $"Department: {result.Department.Name}");
+                }
+                else
+                {
+                    ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
+                    goto ID;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
 
-        public void GetAllByAge() //(9)
+        public void Delete()
+        {
+            ConsoleColor.Yellow.WriteWithColor("Enter employee ID: ");
+        ID: string empID = Console.ReadLine();
+            int newEmpID;
+            bool isParse = int.TryParse(empID, out newEmpID);
+
+            if (isParse)
+            {
+                _empService.Delete(newEmpID);
+                ConsoleColor.Green.WriteWithColor("Deleted!!!");
+            }
+            else
+            {
+                ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
+                goto ID;
+            }
+        }
+
+        public void GetAllByAge() //(11)
         {
             try
             {
@@ -152,7 +176,7 @@ namespace CompanyApp.Controllers
                             $"Surname: {eachEmp.Surname}, " +
                             $"Age: {eachEmp.Age}, " +
                             $"Address: {eachEmp.Address}, " +
-                            $"Department: {eachEmp.Department}");
+                            $"Department: {eachEmp.Department.Name}");
                     }
                 }
                 else

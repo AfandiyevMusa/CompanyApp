@@ -10,7 +10,7 @@ namespace ServiceLayer.Services
     public class EmployeeService : IEmployeeService
     {
         private readonly EmployeeRepository _empRepo;
-        private int _cnt;
+        private int _cnt = 1;
 
         public EmployeeService()
         {
@@ -25,9 +25,13 @@ namespace ServiceLayer.Services
             return employee;
         }
 
-        public void Delete(int id)
+        public void Delete(int? id)
         {
-            throw new NotImplementedException();
+            if (id is null) throw new ArgumentNullException();
+            Employee employee = GetEmpByID(id);
+
+            if (employee is null) throw new NotFoundException("Employee not found!");
+            _empRepo.Delete(employee);
         }
 
         public List<Employee> GetAllEmpByAge(int? age)
@@ -47,9 +51,10 @@ namespace ServiceLayer.Services
             throw new NotImplementedException();
         }
 
-        public Employee GetEmpByID(int id)
+        public Employee GetEmpByID(int? id)
         {
-            throw new NotImplementedException();
+            if (id is null) throw new ArgumentNullException();
+            return _empRepo.Get(n => n.Id == id);
         }
 
         public List<Employee> Search(string searchName, string searchSurname)
