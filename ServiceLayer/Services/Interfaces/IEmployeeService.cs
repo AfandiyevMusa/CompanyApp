@@ -10,8 +10,8 @@ namespace ServiceLayer.Services.Interfaces
         Employee GetEmpByID(int? id);
         void Delete(int? id);
         List<Employee> GetAllEmpByAge(int? age);
+        List<Employee> GetAllEmpByID(int? id);
         List<Employee> GetAllEmpByDepID(int? id);
-        List<Employee> GetAllEmpByDepName(string depName);
         List<Employee> Search(string searchName, string searchSurname);
         //bir de GET ALL EMPLOYEES COUNT
     }

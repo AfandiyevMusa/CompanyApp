@@ -24,7 +24,7 @@ namespace CompanyApp.Controllers
         {
             try
             {
-                if (AppDbContext<Department>.values.Count != 0)
+                if (AppDbContext<Department>.values?.Count != 0)
                 {
                     ConsoleColor.Yellow.WriteWithColor("Enter employee name: ");
                     string? name = Console.ReadLine();
@@ -67,7 +67,7 @@ namespace CompanyApp.Controllers
                                 $"Surname: {result.Surname}, " +
                                 $"Age: {result.Age}, " +
                                 $"Adress: {result.Address}, " +
-                                $"Department: {result.Department.Name}");
+                                $"DepartmentName: {result.Department?.Name}");
                         }
                         else
                         {
@@ -99,7 +99,7 @@ namespace CompanyApp.Controllers
             try
             {
                 ConsoleColor.Yellow.WriteWithColor("Enter department ID: ");
-            ID: string depID = Console.ReadLine();
+            ID: string? depID = Console.ReadLine();
                 int newDepID;
                 bool isParse = int.TryParse(depID, out newDepID);
 
@@ -113,12 +113,12 @@ namespace CompanyApp.Controllers
                     }
 
                     ConsoleColor.Green.WriteWithColor($"" +
-                        $"Id: {result.Id}, " +
-                        $"Name: {result.Name}, " +
-                        $"Surname: {result.Surname}, " +
-                        $"Age: {result.Age} " +
-                        $"Address: {result.Address}, " +
-                        $"Department: {result.Department.Name}");
+                                $"Id: {result.Id}, " +
+                                $"Name: {result.Name}, " +
+                                $"Surname: {result.Surname}, " +
+                                $"Age: {result.Age}, " +
+                                $"Adress: {result.Address}, " +
+                                $"DepartmentName: {result.Department?.Name}");
                 }
                 else
                 {
@@ -128,14 +128,14 @@ namespace CompanyApp.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                ConsoleColor.DarkRed.WriteWithColor(ex.Message);
             }
         }
 
-        public void Delete()
+        public void Delete() //(10)
         {
             ConsoleColor.Yellow.WriteWithColor("Enter employee ID: ");
-        ID: string empID = Console.ReadLine();
+        ID: string? empID = Console.ReadLine();
             int newEmpID;
             bool isParse = int.TryParse(empID, out newEmpID);
 
@@ -156,7 +156,7 @@ namespace CompanyApp.Controllers
             try
             {
                 ConsoleColor.Yellow.WriteWithColor("Enter employee age: ");
-            Age: string empAge = Console.ReadLine();
+            Age: string? empAge = Console.ReadLine();
                 int newEmpAge;
                 bool isParse = int.TryParse(empAge, out newEmpAge);
 
@@ -171,12 +171,12 @@ namespace CompanyApp.Controllers
                     foreach (var eachEmp in result)
                     {
                         ConsoleColor.Green.WriteWithColor($"" +
-                            $"Id: {eachEmp.Id}, " +
-                            $"Name: {eachEmp.Name}, " +
-                            $"Surname: {eachEmp.Surname}, " +
-                            $"Age: {eachEmp.Age}, " +
-                            $"Address: {eachEmp.Address}, " +
-                            $"Department: {eachEmp.Department.Name}");
+                                $"Id: {eachEmp.Id}, " +
+                                $"Name: {eachEmp.Name}, " +
+                                $"Surname: {eachEmp.Surname}, " +
+                                $"Age: {eachEmp.Age}, " +
+                                $"Adress: {eachEmp.Address}, " +
+                                $"DepartmentName: {eachEmp.Department?.Name}");
                     }
                 }
                 else
@@ -188,6 +188,64 @@ namespace CompanyApp.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void GetAllEmpByDepID() //(12)
+        {
+            ConsoleColor.Yellow.WriteWithColor("Enter employee ID: ");
+        ID: string? empID = Console.ReadLine();
+            int newEmpID;
+            bool isParse = int.TryParse(empID, out newEmpID);
+
+            if (isParse)
+            {
+                _empService.GetAllEmpByDepID(newEmpID);
+            }
+            else
+            {
+                ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
+                goto ID;
+            }
+        }
+
+        //public void GetAllEmpByDepName() //(13)
+        //{
+
+        //}
+
+        public void Search()
+        {
+            try
+            {
+                ConsoleColor.Yellow.WriteWithColor("Enter employee name: ");
+                string? name = Console.ReadLine();
+
+                ConsoleColor.Yellow.WriteWithColor("Enter employee surname: ");
+                string? surname = Console.ReadLine();
+
+                var res = _empService.Search(name, surname);
+                if (res.Count != 0)
+                {
+                    foreach (var employee in res)
+                    {
+                        ConsoleColor.Green.WriteWithColor($"" +
+                                     $"Id: {employee.Id}, " +
+                                     $"Name: {employee.Name}, " +
+                                     $"Surname: {employee.Surname}, " +
+                                     $"Age: {employee.Age}, " +
+                                     $"Adress: {employee.Address}, " +
+                                     $"DepartmentName: {employee.Department?.Name}");
+                    }
+                }
+                else
+                {
+                    throw new NotFoundException("Employee not found!");
+                }
+            }
+            catch (Exception ex)
+            {
+                ConsoleColor.DarkRed.WriteWithColor(ex.Message);
             }
         }
 

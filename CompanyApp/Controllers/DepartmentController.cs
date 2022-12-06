@@ -188,51 +188,23 @@ namespace CompanyApp.Controllers
                 string text = Console.ReadLine();
 
                 var res = _departmentService.Search(text);
-
-                foreach (var department in res)
-                {
+				if (res.Count != 0)
+				{
+                    foreach (var department in res)
+                    {
                         ConsoleColor.Green.WriteWithColor($"Id: {department.Id}, Name: {department.Name}, Capacity: {department.Capacity}");
+                    }
                 }
+				else
+				{
+					throw new NotFoundException("Department not found!");
+				}
             }
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.Message);
+                ConsoleColor.DarkRed.WriteWithColor(ex.Message);
 			}
         }
-
-        //public Department GET() //(4)
-        //{
-        //    try
-        //    {
-        //        ConsoleColor.Yellow.WriteWithColor("Enter department ID: ");
-        //    ID: string? depID = Console.ReadLine();
-        //        int newDepID;
-        //        bool isParse = int.TryParse(depID, out newDepID);
-
-        //        if (isParse)
-        //        {
-        //            var result = _departmentService.GetDepByID(newDepID);
-        //            if (result is null)
-        //            {
-        //                ConsoleColor.DarkRed.WriteWithColor("Department not found!!!");
-        //                goto ID;
-        //            }
-
-        //            ConsoleColor.Green.WriteWithColor($"Id: {result.Id}, Name: {result.Name}, Capacity: {result.Capacity}");
-        //        }
-        //        else
-        //        {
-        //            ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
-        //            goto ID;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //}
-
-
     }
 }
 

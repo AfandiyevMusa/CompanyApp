@@ -49,19 +49,19 @@ while (true)
                 employeeController.GetEmpByID();
                 break;
             case 10:
-
+                employeeController.Delete();
                 break;
             case 11:
                 employeeController.GetAllByAge();
                 break;
             case 12:
-
+                employeeController.GetAllEmpByDepID();
                 break;
             case 13:
 
                 break;
             case 14:
-
+                employeeController.Search();
                 break;
             case 15:
 
