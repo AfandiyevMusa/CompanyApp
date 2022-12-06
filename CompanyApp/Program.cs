@@ -46,13 +46,13 @@ while (true)
 
                 break;
             case 9:
-                employeeController.GetAllByID();
+                //employeeController.GetAllByID();
                 break;
             case 10:
 
                 break;
             case 11:
-
+                employeeController.GetAllByAge();
                 break;
             case 12:
 

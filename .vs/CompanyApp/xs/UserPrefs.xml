@@ -1,22 +1,14 @@
 ﻿<Properties StartupConfiguration="{9203A2CB-E6B2-454D-AA4C-4A841C1757EA}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.CompanyApp PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.CompanyApp PreferredExecutionTarget="MonoDevelop.Default" />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CompanyApp/Controllers/DepartmentController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RepositoryLayer/Repositories/DepartmentRepository.cs">
     <Files>
-      <File FileName="CompanyApp/Controllers/DepartmentController.cs" Line="189" Column="15" />
-      <File FileName="ServiceLayer/Services/DepartmentService.cs" Line="69" Column="24" />
-      <File FileName="RepositoryLayer/Repositories/DepartmentRepository.cs" Line="1" Column="1" />
-      <File FileName="CompanyApp/Program.cs" />
-      <File FileName="RepositoryLayer/Repositories/Interfaces/IRepository.cs" />
-      <File FileName="ServiceLayer/Services/Interfaces/IDepartmentService.cs" />
-      <File FileName="DomainLayer/Entities/Employee.cs" />
-      <File FileName="ServiceLayer/Helpers/Helper.cs" />
-      <File FileName="RepositoryLayer/Repositories/EmployeeRepository.cs" />
+      <File FileName="CompanyApp/Program.cs" Line="43" Column="38" />
+      <File FileName="RepositoryLayer/Repositories/DepartmentRepository.cs" Line="27" Column="61" />
+      <File FileName="ServiceLayer/Services/DepartmentService.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -41,6 +33,7 @@
               <Node name="Helpers" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="Interfaces" expanded="True" />
+                <Node name="DepartmentService.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -48,4 +41,6 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
 </Properties>

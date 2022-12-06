@@ -1,5 +1,6 @@
 ﻿using System;
 using DomainLayer.Entities;
+using RepositoryLayer.Datas;
 using RepositoryLayer.Exceptions;
 using ServiceLayer.Helpers;
 using ServiceLayer.Services;
@@ -136,7 +137,7 @@ namespace CompanyApp.Controllers
 			try
 			{
 				ConsoleColor.Yellow.WriteWithColor("Enter department ID: ");
-				ID: string depID = Console.ReadLine();
+				ID: string? depID = Console.ReadLine();
                 int newDepID;
                 bool isParse = int.TryParse(depID, out newDepID);
 
@@ -199,6 +200,39 @@ namespace CompanyApp.Controllers
 			}
         }
 
-	}
+        //public Department GET() //(4)
+        //{
+        //    try
+        //    {
+        //        ConsoleColor.Yellow.WriteWithColor("Enter department ID: ");
+        //    ID: string? depID = Console.ReadLine();
+        //        int newDepID;
+        //        bool isParse = int.TryParse(depID, out newDepID);
+
+        //        if (isParse)
+        //        {
+        //            var result = _departmentService.GetDepByID(newDepID);
+        //            if (result is null)
+        //            {
+        //                ConsoleColor.DarkRed.WriteWithColor("Department not found!!!");
+        //                goto ID;
+        //            }
+
+        //            ConsoleColor.Green.WriteWithColor($"Id: {result.Id}, Name: {result.Name}, Capacity: {result.Capacity}");
+        //        }
+        //        else
+        //        {
+        //            ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
+        //            goto ID;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //}
+
+
+    }
 }
 

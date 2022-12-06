@@ -2,6 +2,7 @@
 using DomainLayer.Entities;
 using RepositoryLayer.Exceptions;
 using RepositoryLayer.Repositories;
+using ServiceLayer.Helpers;
 using ServiceLayer.Services.Interfaces;
 
 namespace ServiceLayer.Services
@@ -24,6 +25,25 @@ namespace ServiceLayer.Services
             return department;
         }
 
+        public List<Department> Update(int id, Department department)
+        {
+            var res = _DepartRepo.Update(department);
+
+            foreach (var eachDepartment in res)
+            {
+                if (eachDepartment.Id == id)
+                {
+                    eachDepartment.Name = department.Name;
+                    eachDepartment.Capacity = department.Capacity;
+                }
+                else
+                {
+
+                }
+            }
+            return res;
+        }
+
         public void Delete(int? id)
         {
             if (id is null) throw new ArgumentNullException();
@@ -33,40 +53,20 @@ namespace ServiceLayer.Services
             _DepartRepo.Delete(department);
         }
 
-        public List<Department> GetAll()
-        {
-            return _DepartRepo.GetAll(null);
-        }
-
         public Department GetDepByID(int? id)
         {
             if (id is null) throw new ArgumentNullException();
             return _DepartRepo.Get(n => n.Id == id);
         }
 
+        public List<Department> GetAll()
+        {
+            return _DepartRepo.GetAll(null);
+        }
+
         public List<Department> Search(string word)
         {
             return _DepartRepo.GetAll(n => n.Name.ToLower().Contains(word.ToLower()));
-        }
-
-        public List<Department> Update(int id, Department department)
-        {
-            var res = _DepartRepo.Update(department);
-
-            foreach (var eachDepartment in res)
-            {
-                if(eachDepartment.Id == id)
-                {
-                    eachDepartment.Name = department.Name;
-                    eachDepartment.Capacity = department.Capacity;
-                }
-                else
-                {
-                    
-                }
-            }
-            return res;
-            
         }
     }
 }

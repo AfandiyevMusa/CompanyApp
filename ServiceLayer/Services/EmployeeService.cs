@@ -19,15 +19,10 @@ namespace ServiceLayer.Services
 
         public Employee Create(Employee employee)
         {
-            //foreach (var eachDep in AppDbContext<Department>.values)
-            //{
-                //if (eachDep is null) throw new ArgumentNullException();
-                employee.Id = _cnt;
-                _empRepo.Add(employee);
-                _cnt++;
-                return employee;
-            //}
-            //return employee;
+            employee.Id = _cnt;
+            _empRepo.Add(employee);
+            _cnt++;
+            return employee;
         }
 
         public void Delete(int id)
@@ -37,7 +32,8 @@ namespace ServiceLayer.Services
 
         public List<Employee> GetAllEmpByAge(int? age)
         {
-            throw new NotImplementedException();
+            if (age is null) throw new ArgumentNullException();
+            return _empRepo.GetAll(n => n.Age == age);
         }
 
         public List<Employee> GetAllEmpByDepID(int? id)
@@ -51,7 +47,7 @@ namespace ServiceLayer.Services
             throw new NotImplementedException();
         }
 
-        public Employee GetDepByID(int id)
+        public Employee GetEmpByID(int id)
         {
             throw new NotImplementedException();
         }

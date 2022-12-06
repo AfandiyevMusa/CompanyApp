@@ -7,12 +7,13 @@ namespace ServiceLayer.Services.Interfaces
 	{
         Employee Create(Employee employee);
         Employee Update(int id, Employee employee);
+        Employee GetEmpByID(int id);
         void Delete(int id);
-        Employee GetDepByID(int id);
         List<Employee> GetAllEmpByAge(int? age);
         List<Employee> GetAllEmpByDepID(int? id);
         List<Employee> GetAllEmpByDepName(string depName);
         List<Employee> Search(string searchName, string searchSurname);
+        //bir de GET ALL EMPLOYEES COUNT
     }
 }
 
