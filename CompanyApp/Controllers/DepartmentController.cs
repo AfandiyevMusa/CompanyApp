@@ -21,10 +21,10 @@ namespace CompanyApp.Controllers
 			try
 			{
 				ConsoleColor.Yellow.WriteWithColor("Enter department name: ");
-				string name = Console.ReadLine();
+				string? name = Console.ReadLine();
 
 				ConsoleColor.Yellow.WriteWithColor("Enter department capacity: ");
-                Capacity:  string depCapacity = Console.ReadLine();
+                Capacity:  string? depCapacity = Console.ReadLine();
 
 				int newDepCapacity;
 
@@ -58,46 +58,52 @@ namespace CompanyApp.Controllers
         {
             try
             {
-                ConsoleColor.Yellow.WriteWithColor("Enter department ID: ");
-				ID: string depID = Console.ReadLine();
-                int newDepID;
-                bool isParse = int.TryParse(depID, out newDepID);
-
-                ConsoleColor.Yellow.WriteWithColor("Enter new department Name: ");
-				string name = Console.ReadLine();
-
-                ConsoleColor.Yellow.WriteWithColor("Enter new department Capacity: ");
-				NewCapacity: string updatedCapacity = Console.ReadLine();
-				int newUpdatedCapacity;
-				bool isParseID = int.TryParse(updatedCapacity, out newUpdatedCapacity);
-
-                if (isParse)
+                if (AppDbContext<Department>.values?.Count != 0)
                 {
-					if (isParseID)
-					{
-                        Department department = new()
+                    ConsoleColor.Yellow.WriteWithColor("Enter department ID: ");
+                ID: string? depID = Console.ReadLine();
+                    int newDepID;
+                    bool isParse = int.TryParse(depID, out newDepID);
+
+                    ConsoleColor.Yellow.WriteWithColor("Enter new department Name: ");
+                    string? name = Console.ReadLine();
+
+                    ConsoleColor.Yellow.WriteWithColor("Enter new department Capacity: ");
+                NewCapacity: string? updatedCapacity = Console.ReadLine();
+                    int newUpdatedCapacity;
+                    bool isParseID = int.TryParse(updatedCapacity, out newUpdatedCapacity);
+
+                    if (isParse)
+                    {
+                        if (isParseID)
                         {
-                            Name = name,
-                            Capacity = newUpdatedCapacity
-                        };
-						if (department is null) throw new ArgumentNullException();
-                        var res = _departmentService.Update(newDepID, department);
-						
-                        if (res is null) throw new ArgumentNullException();
-						ConsoleColor.Cyan.WriteWithColor("Updated!!!");
+                            Department department = new()
+                            {
+                                Name = name,
+                                Capacity = newUpdatedCapacity
+                            };
+                            if (department is null) throw new ArgumentNullException();
+                            var res = _departmentService.Update(newDepID, department);
+
+                            if (res is null) throw new ArgumentNullException();
+                            ConsoleColor.Cyan.WriteWithColor("Updated!!!");
+                        }
+                        else
+                        {
+                            ConsoleColor.DarkRed.WriteWithColor("Please, add new Capacity as number not words: ");
+                            goto NewCapacity;
+                        }
                     }
-					else
-					{
-                        ConsoleColor.DarkRed.WriteWithColor("Please, add new ID which is avaliable: ");
-                        goto NewCapacity;
+                    else
+                    {
+                        ConsoleColor.DarkRed.WriteWithColor("Please, add ID which is number not words: ");
+                        goto ID;
                     }
                 }
                 else
                 {
-                    ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
-                    goto ID;
+                    throw new NotFoundException("There is no department to update!");
                 }
-
             }
             catch (Exception ex)
             {
@@ -110,7 +116,7 @@ namespace CompanyApp.Controllers
 			try
 			{
                 ConsoleColor.Yellow.WriteWithColor("Enter department ID: ");
-				ID:  string depID = Console.ReadLine();
+				ID:  string? depID = Console.ReadLine();
                 int newDepID;
                 bool isParse = int.TryParse(depID, out newDepID);
 
@@ -185,7 +191,7 @@ namespace CompanyApp.Controllers
 			try
 			{
                 ConsoleColor.Yellow.WriteWithColor("Enter Department name: ");
-                string text = Console.ReadLine();
+                string? text = Console.ReadLine();
 
                 var res = _departmentService.Search(text);
 				if (res.Count != 0)

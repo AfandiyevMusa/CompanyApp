@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{9203A2CB-E6B2-454D-AA4C-4A841C1757EA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ServiceLayer/Services/EmployeeService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CompanyApp/Controllers/EmployeeController.cs">
     <Files>
-      <File FileName="CompanyApp/Program.cs" Line="1" Column="1" />
-      <File FileName="CompanyApp/Controllers/EmployeeController.cs" Line="1" Column="1" />
-      <File FileName="ServiceLayer/Services/EmployeeService.cs" Line="68" Column="34" />
-      <File FileName="RepositoryLayer/Repositories/EmployeeRepository.cs" Line="1" Column="1" />
-      <File FileName="ServiceLayer/Services/Interfaces/IEmployeeService.cs" Line="16" Column="46" />
+      <File FileName="CompanyApp/Program.cs" Line="67" Column="40" />
+      <File FileName="CompanyApp/Controllers/EmployeeController.cs" Line="257" Column="80" />
+      <File FileName="ServiceLayer/Services/EmployeeService.cs" Line="72" Column="1" />
+      <File FileName="RepositoryLayer/Repositories/EmployeeRepository.cs" Line="30" Column="1" />
+      <File FileName="ServiceLayer/Services/Interfaces/IEmployeeService.cs" Line="16" Column="30" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,7 +14,6 @@
             <Node name="CompanyApp" expanded="True">
               <Node name="Dependencies" expanded="True" />
               <Node name="Controllers" expanded="True" />
-              <Node name="Program.cs" selected="True" />
             </Node>
             <Node name="DomainLayer" expanded="True">
               <Node name="Common" expanded="True" />

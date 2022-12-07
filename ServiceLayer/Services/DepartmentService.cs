@@ -17,7 +17,7 @@ namespace ServiceLayer.Services
             _DepartRepo = new DepartmentRepository();
         }
 
-        public Department Create(Department department)
+        public Department Create(Department? department)
         {
             department.Id = _cnt;
             _DepartRepo.Add(department);
@@ -25,7 +25,7 @@ namespace ServiceLayer.Services
             return department;
         }
 
-        public List<Department> Update(int id, Department department)
+        public List<Department> Update(int? id, Department? department)
         {
             var res = _DepartRepo.Update(department);
 
@@ -35,6 +35,10 @@ namespace ServiceLayer.Services
                 {
                     eachDepartment.Name = department.Name;
                     eachDepartment.Capacity = department.Capacity;
+                }
+                else
+                {
+                    throw new Exception("There isn't any department with given ID!");
                 }
             }
             return res;
@@ -60,7 +64,7 @@ namespace ServiceLayer.Services
             return _DepartRepo.GetAll(null);
         }
 
-        public List<Department> Search(string word)
+        public List<Department> Search(string? word)
         {
             return _DepartRepo.GetAll(n => n.Name.ToLower().Contains(word.ToLower()));
         }
