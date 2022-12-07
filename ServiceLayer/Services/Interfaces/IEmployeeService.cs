@@ -12,9 +12,9 @@ namespace ServiceLayer.Services.Interfaces
         List<Employee> GetAllEmpByAge(int? age);
         List<Employee> GetAllEmpByID(int? id);
         List<Employee> GetAllEmpByDepID(int? id);
+        List<Employee> GetAllEmpByDepName(string? name);
         List<Employee> Search(string searchName, string searchSurname);
         int GetAllEmpCount();
-        //bir de GET ALL EMPLOYEES COUNT
     }
 }
 

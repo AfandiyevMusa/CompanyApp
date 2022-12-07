@@ -27,6 +27,17 @@ namespace ServiceLayer.Services
             return employee;
         }
 
+        public Employee Update(int id, Employee employee)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Employee GetEmpByID(int? id)
+        {
+            if (id is null) throw new ArgumentNullException();
+            return _empRepo.Get(n => n.Id == id);
+        }
+
         public void Delete(int? id)
         {
             if (id is null) throw new ArgumentNullException();
@@ -51,29 +62,23 @@ namespace ServiceLayer.Services
         public List<Employee> GetAllEmpByDepID(int? id)
         {
             if (id is null) throw new ArgumentNullException();
-            return _empRepo.GetAll(m => m.Id == id);
+            return _empRepo.GetAll(m => m.Department.Id == id);
         }
 
-        public Employee GetEmpByID(int? id)
+        public List<Employee> GetAllEmpByDepName(string? name)
         {
-            if (id is null) throw new ArgumentNullException();
-            return _empRepo.Get(n => n.Id == id);
+            if (name is null) throw new ArgumentNullException();
+            return _empRepo.GetAll(m => m.Department.Name == name);
         }
 
         public List<Employee> Search(string searchName, string searchSurname)
         {
-            return _empRepo.GetAll(n => n.Name.ToLower().Contains(searchName.ToLower()) && n.Surname.ToLower().Contains(searchSurname.ToLower()));
+            return _empRepo.GetAll(n => n.Name.ToLower().Contains(searchName.ToLower()) || n.Surname.ToLower().Contains(searchSurname.ToLower()));
         }
 
         public int GetAllEmpCount()
         {
-            //if(employee is null) throw new ArgumentNullException();
             return _empRepo.GetAll(null).Count;
-        }
-
-        public Employee Update(int id, Employee employee)
-        {
-            throw new NotImplementedException();
         }
     }
 }

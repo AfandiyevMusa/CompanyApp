@@ -193,26 +193,66 @@ namespace CompanyApp.Controllers
 
         public void GetAllEmpByDepID() //(12)
         {
-            ConsoleColor.Yellow.WriteWithColor("Enter employee ID: ");
-        ID: string? empID = Console.ReadLine();
-            int newEmpID;
-            bool isParse = int.TryParse(empID, out newEmpID);
+            try
+            {
+                ConsoleColor.Yellow.WriteWithColor("Enter Employee department ID: ");
+            ID: string? empID = Console.ReadLine();
+                int newEmpID;
+                bool isParse = int.TryParse(empID, out newEmpID);
 
-            if (isParse)
-            {
-                _empService.GetAllEmpByDepID(newEmpID);
+                if (isParse)
+                {
+                    var res = _empService.GetAllEmpByDepID(newEmpID);
+                    if (res.Count is 0) throw new NotFoundException("Department ID not found");
+                    foreach (var eachEmp in res)
+                    {
+                        ConsoleColor.Green.WriteWithColor($"" +
+                                    $"Id: {eachEmp.Id}, " +
+                                    $"Name: {eachEmp.Name}, " +
+                                    $"Surname: {eachEmp.Surname}, " +
+                                    $"Age: {eachEmp.Age}, " +
+                                    $"Adress: {eachEmp.Address}, " +
+                                    $"DepartmentName: {eachEmp.Department?.Name}");
+                    }
+                }
+                else
+                {
+                    ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
+                    goto ID;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
-                goto ID;
+                ConsoleColor.DarkRed.WriteWithColor(ex.Message);
             }
         }
 
-        //public void GetAllEmpByDepName() //(13)
-        //{
+        public void GetAllEmpByDepName() //(13)
+        {
+            try
+            {
+                ConsoleColor.Yellow.WriteWithColor("Enter Employee department Name: ");
+                string? depName = Console.ReadLine();
 
-        //}
+                var res = _empService.GetAllEmpByDepName(depName);
+                if (res.Count is 0) throw new NotFoundException("Department name not found");
+
+                foreach (var eachEmp in res)
+                {
+                    ConsoleColor.Green.WriteWithColor($"" +
+                                $"Id: {eachEmp.Id}, " +
+                                $"Name: {eachEmp.Name}, " +
+                                $"Surname: {eachEmp.Surname}, " +
+                                $"Age: {eachEmp.Age}, " +
+                                $"Adress: {eachEmp.Address}, " +
+                                $"DepartmentName: {eachEmp.Department?.Name}");
+                }
+            }
+            catch (Exception ex)
+            {
+                ConsoleColor.DarkRed.WriteWithColor(ex.Message);
+            }
+        }
 
         public void Search()
         {

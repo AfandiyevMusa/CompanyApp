@@ -58,7 +58,7 @@ while (true)
                 employeeController.GetAllEmpByDepID();
                 break;
             case 13:
-
+                employeeController.GetAllEmpByDepName();
                 break;
             case 14:
                 employeeController.Search();

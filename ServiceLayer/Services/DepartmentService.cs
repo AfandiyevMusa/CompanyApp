@@ -38,7 +38,7 @@ namespace ServiceLayer.Services
                 }
                 else
                 {
-                    throw new Exception("There isn't any department with given ID!");
+                    throw new Exception("There isn't department with given ID: ");
                 }
             }
             return res;
