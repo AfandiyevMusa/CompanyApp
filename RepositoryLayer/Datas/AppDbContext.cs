@@ -3,11 +3,11 @@ namespace RepositoryLayer.Datas
 {
 	public static class AppDbContext<T>
 	{
-		public static List<T>? values;
+		public static List<T>? datas;
 
 		static AppDbContext()
 		{
-			values = new List<T>();
+            datas = new List<T>();
 		}
 	}
 }

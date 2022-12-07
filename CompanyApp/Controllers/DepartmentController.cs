@@ -3,6 +3,7 @@ using DomainLayer.Entities;
 using RepositoryLayer.Datas;
 using RepositoryLayer.Exceptions;
 using ServiceLayer.Helpers;
+using ServiceLayer.Helpers.Constants;
 using ServiceLayer.Services;
 
 namespace CompanyApp.Controllers
@@ -44,7 +45,7 @@ namespace CompanyApp.Controllers
                 }
 				else
 				{
-					ConsoleColor.DarkRed.WriteWithColor("Please, add correct capacity: ");
+					ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CapacityMessage);
 					goto Capacity;
                 }
             }
@@ -58,7 +59,7 @@ namespace CompanyApp.Controllers
         {
             try
             {
-                if (AppDbContext<Department>.values?.Count != 0)
+                if (AppDbContext<Department>.datas?.Count != 0)
                 {
                     ConsoleColor.Yellow.WriteWithColor("Enter department ID: ");
                 ID: string? depID = Console.ReadLine();
@@ -90,19 +91,19 @@ namespace CompanyApp.Controllers
                         }
                         else
                         {
-                            ConsoleColor.DarkRed.WriteWithColor("Please, add new Capacity as number not words: ");
+                            ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.NewCapacityMessage);
                             goto NewCapacity;
                         }
                     }
                     else
                     {
-                        ConsoleColor.DarkRed.WriteWithColor("Please, add ID which is number not words: ");
+                        ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.IdShouldBeNum);
                         goto ID;
                     }
                 }
                 else
                 {
-                    throw new NotFoundException("There is no department to update!");
+                    throw new NotFoundException(ErrorMessage.NoDepartment);
                 }
             }
             catch (Exception ex)
@@ -127,7 +128,7 @@ namespace CompanyApp.Controllers
 				}
 				else
 				{
-                    ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
+                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.AvailableID);
                     goto ID;
                 }
 
@@ -152,7 +153,7 @@ namespace CompanyApp.Controllers
 					var result = _departmentService.GetDepByID(newDepID);
 					if(result is null)
 					{
-						ConsoleColor.DarkRed.WriteWithColor("Department not found!!!");
+						ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.DepNotFound);
 						goto ID;
 					}
 
@@ -160,7 +161,7 @@ namespace CompanyApp.Controllers
                 }
                 else
                 {
-                    ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
+                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.AvailableID);
                     goto ID;
                 }
             }
@@ -177,7 +178,7 @@ namespace CompanyApp.Controllers
 
 			if(result is null)
 			{
-                ConsoleColor.DarkRed.WriteWithColor("Database is empty!!!");
+                ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.DatabaseIsEmpty);
             }
 
 			foreach (var department in result)
@@ -203,7 +204,7 @@ namespace CompanyApp.Controllers
                 }
 				else
 				{
-					throw new NotFoundException("Department not found!");
+					throw new NotFoundException(ErrorMessage.DepNotFound);
 				}
             }
 			catch (Exception ex)

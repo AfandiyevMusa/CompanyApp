@@ -3,6 +3,7 @@
 using CompanyApp.Controllers;
 using DomainLayer.Entities;
 using ServiceLayer.Helpers;
+using ServiceLayer.Helpers.Constants;
 
 DepartmentController departmentController = new();
 EmployeeController employeeController = new();
@@ -72,7 +73,7 @@ while (true)
     }
     else
     {
-        ConsoleColor.DarkRed.WriteWithColor("Choose available option: ");
+        ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.AvailableOpt);
         goto Selection;
     }
 

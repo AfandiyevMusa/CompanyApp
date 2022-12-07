@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
 using DomainLayer.Entities;
 using RepositoryLayer.Datas;
 using RepositoryLayer.Exceptions;
 using ServiceLayer.Helpers;
+using ServiceLayer.Helpers.Constants;
 using ServiceLayer.Services;
 using ServiceLayer.Services.Interfaces;
 
@@ -24,67 +27,88 @@ namespace CompanyApp.Controllers
         {
             try
             {
-                if (AppDbContext<Department>.values?.Count != 0)
+                if (AppDbContext<Department>.datas?.Count != 0)
                 {
                     ConsoleColor.Yellow.WriteWithColor("Enter employee name: ");
-                    string? name = Console.ReadLine();
-
-                    ConsoleColor.Yellow.WriteWithColor("Enter employee surname: ");
-                    string? surname = Console.ReadLine();
-
-                    ConsoleColor.Yellow.WriteWithColor("Enter employee age: ");
-                Age: string? age = Console.ReadLine();
-                    int newAge;
-                    bool isParse = int.TryParse(age, out newAge);
-
-                    ConsoleColor.Yellow.WriteWithColor("Enter employee address: ");
-                    string? address = Console.ReadLine();
-
-                    ConsoleColor.Yellow.WriteWithColor("Enter employee department ID: ");
-                ID: string? id = Console.ReadLine();
-                    int newID;
-                    bool isParseID = int.TryParse(id, out newID);
-
-                    Department department = _depService.GetDepByID(newID);
-
-                    Employee employee = new()
+                Name: string? name = Console.ReadLine();
+                    //@"!@#%ˆ&()-={}:;''<>?,./|˜`1234567890"
+                    if ((!Regex.IsMatch(name, @"[0-9]")) &&
+                        (!Regex.IsMatch(name, @"[A-Za-z0-9]")) &&
+                        //(!Regex.IsMatch(name, @"[A-Za-z0-9 @ # $ % ˆ & * ( ) _ + = / . , < > ` ˜ \ |; : < > ? ! ]")) &&
+                        //(!Regex.IsMatch(name, @"^[ @ # $ % ˆ & * ( ) _ + = / . , < > ` ˜ \ |; : < > ? ! ]*$")) &&
+                        name != " ")
                     {
-                        Name = name,
-                        Surname = surname,
-                        Age = newAge,
-                        Address = address,
-                        Department = department
-                    };
+                        ConsoleColor.Yellow.WriteWithColor("Enter employee surname: ");
+                        Surname: string? surname = Console.ReadLine();
 
-                    if (isParse)
-                    {
-                        if (isParseID)
+                        if ((Regex.IsMatch(surname, "[A-z]")) && surname != " ")
                         {
-                            var result = _empService.Create(employee);
-                            ConsoleColor.Green.WriteWithColor($"" +
-                                $"Id: {result.Id}, " +
-                                $"Name: {result.Name}, " +
-                                $"Surname: {result.Surname}, " +
-                                $"Age: {result.Age}, " +
-                                $"Adress: {result.Address}, " +
-                                $"DepartmentName: {result.Department?.Name}");
+                            ConsoleColor.Yellow.WriteWithColor("Enter employee age: ");
+                        Age: string? age = Console.ReadLine();
+                            int newAge;
+                            bool isParse = int.TryParse(age, out newAge);
+
+                            ConsoleColor.Yellow.WriteWithColor("Enter employee address: ");
+                            string? address = Console.ReadLine();
+
+                            ConsoleColor.Yellow.WriteWithColor("Enter employee department ID: ");
+                        ID: string? id = Console.ReadLine();
+                            int newID;
+                            bool isParseID = int.TryParse(id, out newID);
+
+                            Department department = _depService.GetDepByID(newID);
+
+                            Employee employee = new()
+                            {
+                                Name = name,
+                                Surname = surname,
+                                Age = newAge,
+                                Address = address,
+                                Department = department
+                            };
+
+                            if (isParse)
+                            {
+                                if (isParseID)
+                                {
+                                    var result = _empService.Create(employee);
+                                    ConsoleColor.Green.WriteWithColor($"" +
+                                        $"Id: {result.Id}, " +
+                                        $"Name: {result.Name}, " +
+                                        $"Surname: {result.Surname}, " +
+                                        $"Age: {result.Age}, " +
+                                        $"Adress: {result.Address}, " +
+                                        $"DepartmentName: {result.Department?.Name}");
+                                }
+                                else
+                                {
+                                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectID);
+                                    goto ID;
+                                }
+                            }
+                            else
+                            {
+                                ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectAge);
+                                goto Age;
+                            }
                         }
                         else
                         {
-                            ConsoleColor.DarkRed.WriteWithColor("Please, add correct ID: ");
-                            goto ID;
+                            ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectSurname);
+                            goto Surname;
                         }
-                        
                     }
                     else
                     {
-                        ConsoleColor.DarkRed.WriteWithColor("Please, add correct age: ");
-                        goto Age;
+                        ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectName);
+                        goto Name;
                     }
+
+                    
                 }
                 else
                 {
-                    throw new NotFoundException("Department not found!");                   
+                    throw new NotFoundException(ErrorMessage.DepNotFound);                   
                 }
 
             }
@@ -108,7 +132,7 @@ namespace CompanyApp.Controllers
                     var result = _empService.GetEmpByID(newDepID);
                     if (result is null)
                     {
-                        ConsoleColor.DarkRed.WriteWithColor("Employee not found!!!");
+                        ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.EmpNotFound);
                         goto ID;
                     }
 
@@ -122,7 +146,7 @@ namespace CompanyApp.Controllers
                 }
                 else
                 {
-                    ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
+                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.AvailableID);
                     goto ID;
                 }
             }
@@ -146,7 +170,7 @@ namespace CompanyApp.Controllers
             }
             else
             {
-                ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
+                ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.AvailableID);
                 goto ID;
             }
         }
@@ -165,7 +189,7 @@ namespace CompanyApp.Controllers
                     var result = _empService.GetAllEmpByAge(newEmpAge);
                     if (result is null)
                     {
-                        ConsoleColor.DarkRed.WriteWithColor("Employee not found!!!");
+                        ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.EmpNotFound);
                         goto Age;
                     }
                     foreach (var eachEmp in result)
@@ -181,7 +205,7 @@ namespace CompanyApp.Controllers
                 }
                 else
                 {
-                    ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
+                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.AvailableID);
                     goto Age;
                 }
             }
@@ -203,7 +227,7 @@ namespace CompanyApp.Controllers
                 if (isParse)
                 {
                     var res = _empService.GetAllEmpByDepID(newEmpID);
-                    if (res.Count is 0) throw new NotFoundException("Department ID not found");
+                    if (res.Count is 0) throw new NotFoundException(ErrorMessage.DepIdNotFound);
                     foreach (var eachEmp in res)
                     {
                         ConsoleColor.Green.WriteWithColor($"" +
@@ -217,7 +241,7 @@ namespace CompanyApp.Controllers
                 }
                 else
                 {
-                    ConsoleColor.DarkRed.WriteWithColor("Please, add avaliable ID: ");
+                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.AvailableID);
                     goto ID;
                 }
             }
@@ -235,7 +259,7 @@ namespace CompanyApp.Controllers
                 string? depName = Console.ReadLine();
 
                 var res = _empService.GetAllEmpByDepName(depName);
-                if (res.Count is 0) throw new NotFoundException("Department name not found");
+                if (res.Count is 0) throw new NotFoundException(ErrorMessage.DepNameNotFound);
 
                 foreach (var eachEmp in res)
                 {
@@ -280,7 +304,7 @@ namespace CompanyApp.Controllers
                 }
                 else
                 {
-                    throw new NotFoundException("Employee not found!");
+                    throw new NotFoundException(ErrorMessage.EmpNotFound);
                 }
             }
             catch (Exception ex)
@@ -294,9 +318,8 @@ namespace CompanyApp.Controllers
             try
             {
                 int? res = _empService.GetAllEmpCount();
-                if (res is 0) throw new NotFoundException("Employee isn't exist!");
+                if (res is 0) throw new NotFoundException(ErrorMessage.EmpIsntExist);
                 ConsoleColor.Cyan.WriteWithColor($"All Employees Count is {res}.");
-                
             }
             catch (Exception ex)
             {
@@ -306,4 +329,5 @@ namespace CompanyApp.Controllers
 
     }
 }
+
 

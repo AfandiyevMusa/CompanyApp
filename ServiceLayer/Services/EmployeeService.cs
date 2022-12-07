@@ -3,6 +3,7 @@ using DomainLayer.Entities;
 using RepositoryLayer.Datas;
 using RepositoryLayer.Exceptions;
 using RepositoryLayer.Repositories;
+using ServiceLayer.Helpers.Constants;
 using ServiceLayer.Services.Interfaces;
 
 namespace ServiceLayer.Services
@@ -43,7 +44,7 @@ namespace ServiceLayer.Services
             if (id is null) throw new ArgumentNullException();
             Employee employee = GetEmpByID(id);
 
-            if (employee is null) throw new NotFoundException("Employee not found!");
+            if (employee is null) throw new NotFoundException(ErrorMessage.EmpNotFound);
             _empRepo.Delete(employee);
         }
 

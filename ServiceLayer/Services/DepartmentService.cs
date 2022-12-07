@@ -3,6 +3,7 @@ using DomainLayer.Entities;
 using RepositoryLayer.Exceptions;
 using RepositoryLayer.Repositories;
 using ServiceLayer.Helpers;
+using ServiceLayer.Helpers.Constants;
 using ServiceLayer.Services.Interfaces;
 
 namespace ServiceLayer.Services
@@ -49,7 +50,7 @@ namespace ServiceLayer.Services
             if (id is null) throw new ArgumentNullException();
             Department department = GetDepByID(id);
 
-            if (department is null) throw new NotFoundException("Department not found!");
+            if (department is null) throw new NotFoundException(ErrorMessage.DepNotFound);
             _DepartRepo.Delete(department);
         }
 
