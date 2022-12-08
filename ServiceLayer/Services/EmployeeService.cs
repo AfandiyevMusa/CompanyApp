@@ -28,9 +28,23 @@ namespace ServiceLayer.Services
             return employee;
         }
 
-        public Employee Update(int id, Employee employee)
+        public List<Employee> Update(int id, Employee employee)
         {
-            throw new NotImplementedException();
+            var res = _empRepo.Update(employee);
+
+            foreach (var eachEmp in res)
+            {
+                if (eachEmp.Id == id)
+                {
+                    eachEmp.Name = employee.Name;
+                    eachEmp.Surname = employee.Surname;
+                    eachEmp.Age = employee.Age;
+                    eachEmp.Address = employee.Address;
+                    eachEmp.Department = employee.Department;
+                    break;
+                }
+            }
+            return res;
         }
 
         public Employee GetEmpByID(int? id)
@@ -83,4 +97,3 @@ namespace ServiceLayer.Services
         }
     }
 }
-

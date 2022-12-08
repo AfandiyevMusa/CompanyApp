@@ -26,20 +26,17 @@ namespace ServiceLayer.Services
             return department;
         }
 
-        public List<Department> Update(int? id, Department? department)
+        public List<Department> Update(int? id, Department department)
         {
             var res = _DepartRepo.Update(department);
 
-            foreach (var eachDepartment in res)
+            foreach(var eachDepartment in res)
             {
                 if (eachDepartment.Id == id)
                 {
                     eachDepartment.Name = department.Name;
                     eachDepartment.Capacity = department.Capacity;
-                }
-                else
-                {
-                    throw new Exception("There isn't department with given ID: ");
+                    break;
                 }
             }
             return res;
@@ -71,4 +68,3 @@ namespace ServiceLayer.Services
         }
     }
 }
-

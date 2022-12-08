@@ -11,4 +11,3 @@ namespace RepositoryLayer.Datas
 		}
 	}
 }
-

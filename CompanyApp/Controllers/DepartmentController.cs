@@ -87,7 +87,7 @@ namespace CompanyApp.Controllers
                             var res = _departmentService.Update(newDepID, department);
 
                             if (res is null) throw new ArgumentNullException();
-                            ConsoleColor.Cyan.WriteWithColor("Updated!!!");
+                            ConsoleColor.Cyan.WriteWithColor(ErrorMessage.Updated);
                         }
                         else
                         {
@@ -124,7 +124,7 @@ namespace CompanyApp.Controllers
 				if (isParse)
 				{
 					_departmentService.Delete(newDepID);
-					ConsoleColor.Green.WriteWithColor("Deleted!!!");
+					ConsoleColor.Green.WriteWithColor(ErrorMessage.Deleted);
 				}
 				else
 				{
@@ -214,4 +214,3 @@ namespace CompanyApp.Controllers
         }
     }
 }
-

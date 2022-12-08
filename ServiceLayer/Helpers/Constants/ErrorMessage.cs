@@ -19,7 +19,12 @@ namespace ServiceLayer.Helpers.Constants
         public const string CorrectSurname = "Please, add correct surname: ";
         public const string CorrectAge = "Please, add correct age: ";
         public const string CorrectID = "Please, add correct ID: ";
+        public const string Updated = "Updated!!!";
+        public const string Deleted = "Deleted!!!";
+        public const string DepIdShouldBeNum = "Please, add new Department ID as number not words: ";
+        public const string EmpAgeShouldBeNum = "Please, add new Employee Age as number not words: ";
+        public const string EmpIdShouldBeNum = "Please, add new Employee ID as number not words: ";
+        public const string NoEmployee = "There isn't Employee to update!";
 
     }
 }
-

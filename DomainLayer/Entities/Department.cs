@@ -9,4 +9,3 @@ namespace DomainLayer.Entities
 		public int Capacity { get; set; }
 	}
 }
-

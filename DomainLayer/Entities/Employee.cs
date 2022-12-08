@@ -12,4 +12,3 @@ namespace DomainLayer.Entities
 		public Department? Department { get; set; }
 	}
 }
-

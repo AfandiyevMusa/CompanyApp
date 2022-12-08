@@ -6,7 +6,7 @@ namespace ServiceLayer.Services.Interfaces
 	public interface IEmployeeService
 	{
         Employee Create(Employee employee);
-        Employee Update(int id, Employee employee);
+        List<Employee> Update(int id, Employee employee);
         Employee GetEmpByID(int? id);
         void Delete(int? id);
         List<Employee> GetAllEmpByAge(int? age);
@@ -17,4 +17,3 @@ namespace ServiceLayer.Services.Interfaces
         int GetAllEmpCount();
     }
 }
-

@@ -1,12 +1,7 @@
 ﻿<Properties StartupConfiguration="{9203A2CB-E6B2-454D-AA4C-4A841C1757EA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CompanyApp/Controllers/EmployeeController.cs">
-    <Files>
-      <File FileName="CompanyApp/Program.cs" Line="67" Column="40" />
-      <File FileName="CompanyApp/Controllers/EmployeeController.cs" Line="257" Column="80" />
-      <File FileName="ServiceLayer/Services/EmployeeService.cs" Line="72" Column="1" />
-      <File FileName="RepositoryLayer/Repositories/EmployeeRepository.cs" Line="30" Column="1" />
-      <File FileName="ServiceLayer/Services/Interfaces/IEmployeeService.cs" Line="16" Column="30" />
-    </Files>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -27,7 +22,9 @@
               </Node>
             </Node>
             <Node name="ServiceLayer" expanded="True">
-              <Node name="Helpers" expanded="True" />
+              <Node name="Helpers" expanded="True">
+                <Node name="Constants" expanded="True" />
+              </Node>
               <Node name="Services" expanded="True">
                 <Node name="Interfaces" expanded="True" />
               </Node>
@@ -37,8 +34,6 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.CompanyApp PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

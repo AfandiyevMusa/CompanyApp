@@ -44,7 +44,7 @@ while (true)
                 employeeController.Create();
                 break;
             case 8:
-
+                employeeController.Update();
                 break;
             case 9:
                 employeeController.GetEmpByID();

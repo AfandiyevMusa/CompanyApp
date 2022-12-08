@@ -6,4 +6,3 @@ namespace DomainLayer.Common
 		public int Id { get; set; }
 	}
 }
-
