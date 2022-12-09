@@ -98,7 +98,7 @@ namespace CompanyApp.Controllers
                     else
                     {
                         ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.IdShouldBeNum);
-                        goto ID;
+                        
                     }
                 }
                 else

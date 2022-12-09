@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using DomainLayer.Entities;
@@ -30,19 +31,15 @@ namespace CompanyApp.Controllers
                 if (AppDbContext<Department>.datas?.Count != 0)
                 {
                     ConsoleColor.Yellow.WriteWithColor("Enter employee name: ");
-                Name: string? name = Console.ReadLine();
-                    //@"!@#%ˆ&()-={}:;''<>?,./|˜`1234567890"
-                    //if ((!Regex.IsMatch(name, @"[0-9]")) &&
-                    //    (!Regex.IsMatch(name, @"[A-Za-z0-9]")) &&
-                    //    //(!Regex.IsMatch(name, @"[A-Za-z0-9 @ # $ % ˆ & * ( ) _ + = / . , < > ` ˜ \ |; : < > ? ! ]")) &&
-                    //    //(!Regex.IsMatch(name, @"^[ @ # $ % ˆ & * ( ) _ + = / . , < > ` ˜ \ |; : < > ? ! ]*$")) &&
-                    //    name != " ")
-                    //{
+                Name: string? name = Console.ReadLine().Replace(" ", "");
+                    
+                    if (Regex.IsMatch(name, @"^[A-Za-z ]+$") && name != "")
+                    {
                         ConsoleColor.Yellow.WriteWithColor("Enter employee surname: ");
-                        Surname: string? surname = Console.ReadLine();
+                    Surname: string? surname = Console.ReadLine();
 
-                        //if ((Regex.IsMatch(surname, "[A-z]")) && surname != " ")
-                        //{
+                        if (Regex.IsMatch(surname, @"^[A-Za-z ]+$") && surname != "")
+                        {
                             ConsoleColor.Yellow.WriteWithColor("Enter employee age: ");
                         Age: string? age = Console.ReadLine();
                             int newAge;
@@ -91,26 +88,21 @@ namespace CompanyApp.Controllers
                                 ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectAge);
                                 goto Age;
                             }
-                    //    }
-                    //    else
-                    //    {
-                    //        ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectSurname);
-                    //        goto Surname;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectName);
-                    //    goto Name;
-                    //}
+                        }
+                        else
+                        {
+                            ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectSurname);
+                            goto Surname;
+                        }
+                        
+                    }
+                    else
+                    {
+                        ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectName);
+                        goto Name;
+                    }
 
-                    
                 }
-                else
-                {
-                    throw new NotFoundException(ErrorMessage.DepNotFound);                   
-                }
-
             }
             catch (Exception ex)
             {
@@ -269,7 +261,7 @@ namespace CompanyApp.Controllers
                 if (isParse)
                 {
                     var result = _empService.GetAllEmpByAge(newEmpAge);
-                    if (result is null)
+                    if (result.Count is 0)
                     {
                         ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.EmpNotFound);
                         goto Age;
@@ -309,7 +301,12 @@ namespace CompanyApp.Controllers
                 if (isParse)
                 {
                     var res = _empService.GetAllEmpByDepID(newEmpID);
-                    if (res.Count is 0) throw new NotFoundException(ErrorMessage.DepIdNotFound);
+                    if (res.Count is 0)
+                    {
+                        ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.DepIdNotFound);
+                        goto ID;
+                    }
+
                     foreach (var eachEmp in res)
                     {
                         ConsoleColor.Green.WriteWithColor($"" +
@@ -338,10 +335,14 @@ namespace CompanyApp.Controllers
             try
             {
                 ConsoleColor.Yellow.WriteWithColor("Enter Employee department Name: ");
-                string? depName = Console.ReadLine();
+       depName: string? depName = Console.ReadLine();
 
                 var res = _empService.GetAllEmpByDepName(depName);
-                if (res.Count is 0) throw new NotFoundException(ErrorMessage.DepNameNotFound);
+                if (res.Count is 0)
+                {
+                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.DepNameNotFound);
+                    goto depName;
+                }
 
                 foreach (var eachEmp in res)
                 {

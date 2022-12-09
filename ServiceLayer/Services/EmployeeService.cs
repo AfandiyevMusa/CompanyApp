@@ -86,7 +86,7 @@ namespace ServiceLayer.Services
             return _empRepo.GetAll(m => m.Department.Name == name);
         }
 
-        public List<Employee> Search(string searchName, string searchSurname)
+        public List<Employee> Search(string? searchName, string searchSurname)
         {
             return _empRepo.GetAll(n => n.Name.ToLower().Contains(searchName.ToLower()) || n.Surname.ToLower().Contains(searchSurname.ToLower()));
         }
