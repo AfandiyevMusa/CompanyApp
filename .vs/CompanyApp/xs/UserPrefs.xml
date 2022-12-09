@@ -1,9 +1,19 @@
 ﻿<Properties StartupConfiguration="{9203A2CB-E6B2-454D-AA4C-4A841C1757EA}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.CompanyApp PreferredExecutionTarget="MonoDevelop.Default" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="RepositoryLayer/Datas/AppDbContext.cs">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="CompanyApp/Controllers/EmployeeController.cs">
     <Files>
-      <File FileName="CompanyApp/Program.cs" Line="1" Column="1" />
-      <File FileName="RepositoryLayer/Datas/AppDbContext.cs" Line="1" Column="1" />
+      <File FileName="CompanyApp/Controllers/EmployeeController.cs" Line="32" Column="18" />
+      <File FileName="CompanyApp/Controllers/DepartmentController.cs" Line="126" Column="29" />
+      <File FileName="ServiceLayer/Services/DepartmentService.cs" Line="60" Column="41" />
+      <File FileName="ServiceLayer/Helpers/Constants/ErrorMessage.cs" Line="27" Column="29" />
+      <File FileName="ServiceLayer/Services/EmployeeService.cs" Line="62" Column="89" />
+      <File FileName="RepositoryLayer/Repositories/EmployeeRepository.cs" Line="27" Column="31" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,9 +28,7 @@
               <Node name="Entities" expanded="True" />
             </Node>
             <Node name="RepositoryLayer" expanded="True">
-              <Node name="Datas" expanded="True">
-                <Node name="AppDbContext.cs" selected="True" />
-              </Node>
+              <Node name="Datas" expanded="True" />
               <Node name="Exceptions" expanded="True" />
               <Node name="Repositories" expanded="True">
                 <Node name="Interfaces" expanded="True" />
@@ -39,10 +47,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.CompanyApp PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
