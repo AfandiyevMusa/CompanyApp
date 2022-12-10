@@ -28,17 +28,18 @@ namespace CompanyApp.Controllers
         {
             try
             {
+                
                 if (AppDbContext<Department>.datas?.Count != 0)
                 {
                     ConsoleColor.Yellow.WriteWithColor("Enter employee name: ");
                 Name: string? name = Console.ReadLine().Replace(" ", "");
-                    
-                    if (Regex.IsMatch(name, @"^[A-Za-z ]+$") && name != "")
+
+                    if (Regex.IsMatch(name, @"^[A-Z]{1}[a-z]+$") && name != "")
                     {
                         ConsoleColor.Yellow.WriteWithColor("Enter employee surname: ");
-                    Surname: string? surname = Console.ReadLine();
+                    Surname: string? surname = Console.ReadLine().Replace(" ", "");
 
-                        if (Regex.IsMatch(surname, @"^[A-Za-z ]+$") && surname != "")
+                        if (Regex.IsMatch(surname, @"^[A-Z]{1}[a-z]+$") && surname != "")
                         {
                             ConsoleColor.Yellow.WriteWithColor("Enter employee age: ");
                         Age: string? age = Console.ReadLine();
@@ -54,39 +55,47 @@ namespace CompanyApp.Controllers
                             bool isParseID = int.TryParse(id, out newID);
 
                             Department department = _depService.GetDepByID(newID);
+                            var res = _empService.GetAllEmpByDepID(newID).Count;
 
-                            Employee employee = new()
+                            if (res > department.Capacity)
                             {
-                                Name = name,
-                                Surname = surname,
-                                Age = newAge,
-                                Address = address,
-                                Department = department
-                            };
-
-                            if (isParse)
-                            {
-                                if (isParseID)
-                                {
-                                    var result = _empService.Create(employee);
-                                    ConsoleColor.Green.WriteWithColor($"" +
-                                        $"Id: {result.Id}, " +
-                                        $"Name: {result.Name}, " +
-                                        $"Surname: {result.Surname}, " +
-                                        $"Age: {result.Age}, " +
-                                        $"Adress: {result.Address}, " +
-                                        $"DepartmentName: {result.Department?.Name}");
-                                }
-                                else
-                                {
-                                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectID);
-                                    goto ID;
-                                }
+                                throw new NotFoundException("Department is full!");
                             }
                             else
                             {
-                                ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectAge);
-                                goto Age;
+                                Employee employee = new()
+                                {
+                                    Name = name,
+                                    Surname = surname,
+                                    Age = newAge,
+                                    Address = address,
+                                    Department = department
+                                };
+
+                                if (isParse)
+                                {
+                                    if (isParseID)
+                                    {
+                                        var result = _empService.Create(employee);
+                                        ConsoleColor.Green.WriteWithColor($"" +
+                                            $"Id: {result.Id}, " +
+                                            $"Name: {result.Name}, " +
+                                            $"Surname: {result.Surname}, " +
+                                            $"Age: {result.Age}, " +
+                                            $"Adress: {result.Address}, " +
+                                            $"DepartmentName: {result.Department?.Name}");
+                                    }
+                                    else
+                                    {
+                                        ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectID);
+                                        goto ID;
+                                    }
+                                }
+                                else
+                                {
+                                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectAge);
+                                    goto Age;
+                                }
                             }
                         }
                         else
@@ -94,14 +103,12 @@ namespace CompanyApp.Controllers
                             ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectSurname);
                             goto Surname;
                         }
-                        
                     }
                     else
                     {
                         ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectName);
                         goto Name;
                     }
-
                 }
                 else
                 {
@@ -121,19 +128,19 @@ namespace CompanyApp.Controllers
                 if (AppDbContext<Employee>.datas?.Count != 0)
                 {
                     ConsoleColor.Yellow.WriteWithColor("Enter Employee ID: ");
-                empID: string? empID = Console.ReadLine();
+                empID: string? empID = Console.ReadLine().Replace(" ", "");
                     int newEmpID;
                     bool isParseEmpID = int.TryParse(empID, out newEmpID);
 
                     ConsoleColor.Yellow.WriteWithColor("Enter new Employee Name: ");
-                Name:  string? name = Console.ReadLine();
+                Name:  string? name = Console.ReadLine().Replace(" ", "");
 
-                    if (Regex.IsMatch(name, @"^[A-Za-z ]+$") && name != "")
+                    if (Regex.IsMatch(name, @"^[A-Z]{1}[a-z]+$") && name != "")
                     {
                         ConsoleColor.Yellow.WriteWithColor("Enter new Employee Surname: ");
                     Surname: string? surname = Console.ReadLine();
 
-                        if (Regex.IsMatch(surname, @"^[A-Za-z ]+$") && surname != "")
+                        if (Regex.IsMatch(surname, @"^[A-Z]{1}[a-z]+$") && surname != "")
                         {
                             ConsoleColor.Yellow.WriteWithColor("Enter Employee Age: ");
                         Age: string? empAge = Console.ReadLine();
@@ -430,14 +437,14 @@ namespace CompanyApp.Controllers
                 if (AppDbContext<Employee>.datas?.Count != 0)
                 {
                     ConsoleColor.Yellow.WriteWithColor("Enter employee name: ");
-                Name: string? name = Console.ReadLine();
+                Name: string? name = Console.ReadLine().Replace(" ", "");
 
-                    if (Regex.IsMatch(name, @"^[A-Za-z ]+$") && name != "")
+                    if (Regex.IsMatch(name, @"^[A-Z]{1}[a-z]+$") && name != "")
                     {
                         ConsoleColor.Yellow.WriteWithColor("Enter employee surname: ");
-                    Surname: string? surname = Console.ReadLine();
+                    Surname: string? surname = Console.ReadLine().Replace(" ", "");
 
-                        if (Regex.IsMatch(surname, @"^[A-Za-z ]+$") && surname != "")
+                        if (Regex.IsMatch(surname, @"^[A-Z]{1}[a-z]+$") && surname != "")
                         {
                             var res = _empService.Search(name, surname);
                             if (res.Count != 0)
