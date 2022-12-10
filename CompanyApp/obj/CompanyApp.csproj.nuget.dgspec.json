@@ -1,33 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/CompanyApp/CompanyApp.csproj": {}
+    "C:\\Users\\musaha\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp.csproj": {}
   },
   "projects": {
-    "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/CompanyApp/CompanyApp.csproj": {
+    "C:\\Users\\musaha\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/CompanyApp/CompanyApp.csproj",
+        "projectUniqueName": "C:\\Users\\musaha\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp.csproj",
         "projectName": "CompanyApp",
-        "projectPath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/CompanyApp/CompanyApp.csproj",
-        "packagesPath": "/Users/afandiyevmusa/.nuget/packages/",
-        "outputPath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/CompanyApp/obj/",
+        "projectPath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp.csproj",
+        "packagesPath": "C:\\Users\\musaha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\CompanyApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/afandiyevmusa/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\musaha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/ServiceLayer/ServiceLayer.csproj": {
-                "projectPath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/ServiceLayer/ServiceLayer.csproj"
+              "C:\\Users\\musaha\\Desktop\\CompanyApp\\ServiceLayer\\ServiceLayer.csproj": {
+                "projectPath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\ServiceLayer\\ServiceLayer.csproj"
               }
             }
           }
@@ -57,26 +59,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/DomainLayer/DomainLayer.csproj": {
+    "C:\\Users\\musaha\\Desktop\\CompanyApp\\DomainLayer\\DomainLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/DomainLayer/DomainLayer.csproj",
+        "projectUniqueName": "C:\\Users\\musaha\\Desktop\\CompanyApp\\DomainLayer\\DomainLayer.csproj",
         "projectName": "DomainLayer",
-        "projectPath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/DomainLayer/DomainLayer.csproj",
-        "packagesPath": "/Users/afandiyevmusa/.nuget/packages/",
-        "outputPath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/DomainLayer/obj/",
+        "projectPath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\DomainLayer\\DomainLayer.csproj",
+        "packagesPath": "C:\\Users\\musaha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\DomainLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/afandiyevmusa/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\musaha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -110,34 +114,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/RepositoryLayer/RepositoryLayer.csproj": {
+    "C:\\Users\\musaha\\Desktop\\CompanyApp\\RepositoryLayer\\RepositoryLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/RepositoryLayer/RepositoryLayer.csproj",
+        "projectUniqueName": "C:\\Users\\musaha\\Desktop\\CompanyApp\\RepositoryLayer\\RepositoryLayer.csproj",
         "projectName": "RepositoryLayer",
-        "projectPath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/RepositoryLayer/RepositoryLayer.csproj",
-        "packagesPath": "/Users/afandiyevmusa/.nuget/packages/",
-        "outputPath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/RepositoryLayer/obj/",
+        "projectPath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\RepositoryLayer\\RepositoryLayer.csproj",
+        "packagesPath": "C:\\Users\\musaha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\RepositoryLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/afandiyevmusa/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\musaha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/DomainLayer/DomainLayer.csproj": {
-                "projectPath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/DomainLayer/DomainLayer.csproj"
+              "C:\\Users\\musaha\\Desktop\\CompanyApp\\DomainLayer\\DomainLayer.csproj": {
+                "projectPath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\DomainLayer\\DomainLayer.csproj"
               }
             }
           }
@@ -167,34 +173,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/ServiceLayer/ServiceLayer.csproj": {
+    "C:\\Users\\musaha\\Desktop\\CompanyApp\\ServiceLayer\\ServiceLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/ServiceLayer/ServiceLayer.csproj",
+        "projectUniqueName": "C:\\Users\\musaha\\Desktop\\CompanyApp\\ServiceLayer\\ServiceLayer.csproj",
         "projectName": "ServiceLayer",
-        "projectPath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/ServiceLayer/ServiceLayer.csproj",
-        "packagesPath": "/Users/afandiyevmusa/.nuget/packages/",
-        "outputPath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/ServiceLayer/obj/",
+        "projectPath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\ServiceLayer\\ServiceLayer.csproj",
+        "packagesPath": "C:\\Users\\musaha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\ServiceLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/afandiyevmusa/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\musaha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/RepositoryLayer/RepositoryLayer.csproj": {
-                "projectPath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/RepositoryLayer/RepositoryLayer.csproj"
+              "C:\\Users\\musaha\\Desktop\\CompanyApp\\RepositoryLayer\\RepositoryLayer.csproj": {
+                "projectPath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\RepositoryLayer\\RepositoryLayer.csproj"
               }
             }
           }
@@ -224,7 +232,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

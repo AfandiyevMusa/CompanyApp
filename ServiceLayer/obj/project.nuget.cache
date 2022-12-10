@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Bo+uxGqYQhhTsKWjKbUsYv2qGheSwGDlVPZx122p5cSWlqICBJmG8IFXHyfMxE0a4StXZBPbtmJuyIRsIzGL3g==",
+  "dgSpecHash": "BoQXX5b+CWQveeUdIP1Ih4WBMVjof4y3I+sRyloG2gBLlsEQddDTfevxbifWAMLPL8Mpnq23TVGgbyFFiE4TPg==",
   "success": true,
-  "projectFilePath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/ServiceLayer/ServiceLayer.csproj",
+  "projectFilePath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\ServiceLayer\\ServiceLayer.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

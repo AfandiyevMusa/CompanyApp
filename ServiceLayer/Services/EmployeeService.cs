@@ -78,7 +78,8 @@ namespace ServiceLayer.Services
         public List<Employee> GetAllEmpByDepID(int? id)
         {
             if (id is null) throw new ArgumentNullException();
-            return _empRepo.GetAll(m => m.Department.Id == id);
+            var res = _empRepo.GetAll(m => m.Department.Id == id);
+            return res;
         }
 
         public List<Employee> GetAllEmpByDepName(string? name)

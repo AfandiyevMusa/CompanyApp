@@ -54,7 +54,8 @@ namespace ServiceLayer.Services
         public Department GetDepByID(int? id)
         {
             if (id is null) throw new ArgumentNullException();
-            return _DepartRepo.Get(n => n.Id == id);
+            var res = _DepartRepo.Get(n => n.Id == id);
+            return res;
         }
 
         public List<Department> GetAll()

@@ -31,6 +31,12 @@ namespace CompanyApp.Controllers
                 
                 if (AppDbContext<Department>.datas?.Count != 0)
                 {
+                    ConsoleColor.Yellow.WriteWithColor("Enter employee department ID: ");
+                ID: string? id = Console.ReadLine();
+                    int newID;
+                    bool isParseID = int.TryParse(id, out newID);
+
+                    Department department = _depService.GetDepByID(newID);
                     ConsoleColor.Yellow.WriteWithColor("Enter employee name: ");
                 Name: string? name = Console.ReadLine().Replace(" ", "");
 
@@ -49,15 +55,9 @@ namespace CompanyApp.Controllers
                             ConsoleColor.Yellow.WriteWithColor("Enter employee address: ");
                             string? address = Console.ReadLine();
 
-                            ConsoleColor.Yellow.WriteWithColor("Enter employee department ID: ");
-                        ID: string? id = Console.ReadLine();
-                            int newID;
-                            bool isParseID = int.TryParse(id, out newID);
-
-                            Department department = _depService.GetDepByID(newID);
                             var res = _empService.GetAllEmpByDepID(newID).Count;
 
-                            if (res > department.Capacity)
+                            if ((res + 1) > department.Capacity)
                             {
                                 throw new NotFoundException("Department is full!");
                             }

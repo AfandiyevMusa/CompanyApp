@@ -63,32 +63,34 @@
     ]
   },
   "packageFolders": {
-    "/Users/afandiyevmusa/.nuget/packages/": {}
+    "C:\\Users\\musaha\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/CompanyApp/CompanyApp.csproj",
+      "projectUniqueName": "C:\\Users\\musaha\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp.csproj",
       "projectName": "CompanyApp",
-      "projectPath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/CompanyApp/CompanyApp.csproj",
-      "packagesPath": "/Users/afandiyevmusa/.nuget/packages/",
-      "outputPath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/CompanyApp/obj/",
+      "projectPath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\CompanyApp\\CompanyApp.csproj",
+      "packagesPath": "C:\\Users\\musaha\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\CompanyApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/afandiyevmusa/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\musaha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/ServiceLayer/ServiceLayer.csproj": {
-              "projectPath": "/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/ServiceLayer/ServiceLayer.csproj"
+            "C:\\Users\\musaha\\Desktop\\CompanyApp\\ServiceLayer\\ServiceLayer.csproj": {
+              "projectPath": "C:\\Users\\musaha\\Desktop\\CompanyApp\\ServiceLayer\\ServiceLayer.csproj"
             }
           }
         }
@@ -118,7 +120,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
