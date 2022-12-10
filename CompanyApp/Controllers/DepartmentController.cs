@@ -66,39 +66,46 @@ namespace CompanyApp.Controllers
                     int newDepID;
                     bool isParse = int.TryParse(depID, out newDepID);
 
-                    ConsoleColor.Yellow.WriteWithColor("Enter new department Name: ");
-                    string? name = Console.ReadLine();
-
-                    ConsoleColor.Yellow.WriteWithColor("Enter new department Capacity: ");
-                NewCapacity: string? updatedCapacity = Console.ReadLine();
-                    int newUpdatedCapacity;
-                    bool isParseID = int.TryParse(updatedCapacity, out newUpdatedCapacity);
-
                     if (isParse)
                     {
-                        if (isParseID)
+                        if(_departmentService.GetDepByID(newDepID) != null)
                         {
-                            Department department = new()
-                            {
-                                Name = name,
-                                Capacity = newUpdatedCapacity
-                            };
-                            if (department is null) throw new ArgumentNullException();
-                            var res = _departmentService.Update(newDepID, department);
+                            ConsoleColor.Yellow.WriteWithColor("Enter new department Name: ");
+                            string? name = Console.ReadLine();
 
-                            if (res is null) throw new ArgumentNullException();
-                            ConsoleColor.Cyan.WriteWithColor(ErrorMessage.Updated);
+                            ConsoleColor.Yellow.WriteWithColor("Enter new department Capacity: ");
+                        NewCapacity: string? updatedCapacity = Console.ReadLine();
+                            int newUpdatedCapacity;
+                            bool isParseID = int.TryParse(updatedCapacity, out newUpdatedCapacity);
+
+                            if (isParseID)
+                            {
+                                Department department = new()
+                                {
+                                    Name = name,
+                                    Capacity = newUpdatedCapacity
+                                };
+                                if (department is null) throw new ArgumentNullException();
+                                var res = _departmentService.Update(newDepID, department);
+
+                                if (res is null) throw new ArgumentNullException();
+                                ConsoleColor.Cyan.WriteWithColor(ErrorMessage.Updated);
+                            }
+                            else
+                            {
+                                ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.NewCapacityMessage);
+                                goto NewCapacity;
+                            }
                         }
                         else
                         {
-                            ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.NewCapacityMessage);
-                            goto NewCapacity;
+                            throw new NotFoundException(ErrorMessage.DepIdNotFound);
                         }
                     }
                     else
                     {
                         ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.IdShouldBeNum);
-                        
+                        goto ID;
                     }
                 }
                 else
@@ -123,12 +130,19 @@ namespace CompanyApp.Controllers
 
 				if (isParse)
 				{
-					_departmentService.Delete(newDepID);
-					ConsoleColor.Green.WriteWithColor(ErrorMessage.Deleted);
+                    if (_departmentService.GetDepByID(newDepID) != null)
+                    {
+                        _departmentService.Delete(newDepID);
+                        ConsoleColor.Green.WriteWithColor(ErrorMessage.Deleted);
+                    }
+                    else
+                    {
+                        throw new NotFoundException(ErrorMessage.DepIdNotFound);
+                    }
 				}
 				else
 				{
-                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.AvailableID);
+                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.IdShouldBeNum);
                     goto ID;
                 }
 
@@ -150,18 +164,25 @@ namespace CompanyApp.Controllers
 
                 if (isParse)
                 {
-					var result = _departmentService.GetDepByID(newDepID);
-					if(result is null)
-					{
-						ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.DepNotFound);
-						goto ID;
-					}
+                    if (_departmentService.GetDepByID(newDepID) != null)
+                    {
+                        var result = _departmentService.GetDepByID(newDepID);
+                        if (result is null)
+                        {
+                            ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.DepNotFound);
+                            goto ID;
+                        }
 
-                    ConsoleColor.Green.WriteWithColor($"Id: {result.Id}, Name: {result.Name}, Capacity: {result.Capacity}");
+                        ConsoleColor.Green.WriteWithColor($"Id: {result.Id}, Name: {result.Name}, Capacity: {result.Capacity}");
+                    }
+                    else
+                    {
+                        throw new NotFoundException(ErrorMessage.DepIdNotFound);
+                    }
                 }
                 else
                 {
-                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.AvailableID);
+                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.IdShouldBeNum);
                     goto ID;
                 }
             }
