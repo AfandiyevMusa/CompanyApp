@@ -29,23 +29,10 @@ namespace ServiceLayer.Services
             return employee;
         }
 
-        public List<Employee> Update(int id, Employee employee)
+        public void Update(int id, Employee employee)
         {
-            var res = _empRepo.Update(employee);
-
-            foreach (var eachEmp in res)
-            {
-                if (eachEmp.Id == id)
-                {
-                    eachEmp.Name = employee.Name;
-                    eachEmp.Surname = employee.Surname;
-                    eachEmp.Age = employee.Age;
-                    eachEmp.Address = employee.Address;
-                    eachEmp.Department = employee.Department;
-                    break;
-                }
-            }
-            return res;
+            employee.Id = id;
+            _empRepo.Update(employee);
         }
 
         public Employee GetEmpByID(int? id)

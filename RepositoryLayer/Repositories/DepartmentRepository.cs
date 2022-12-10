@@ -29,10 +29,26 @@ namespace RepositoryLayer.Repositories
             return predicate == null ? AppDbContext<Department>.datas : AppDbContext<Department>.datas.FindAll(predicate);
         }
 
-        public List<Department> Update(Department entity)
+        public void Update(Department newDepartment)
         {
-            if (entity == null) throw new ArgumentNullException();
-            return AppDbContext<Department>.datas;
+            var department = Get(n => n.Id == newDepartment.Id);
+            if (newDepartment.Name == string.Empty)
+            {
+                newDepartment.Name = department.Name;
+            }
+            else
+            {
+                department.Name = newDepartment.Name;
+            }
+            
+            if(newDepartment.Capacity == int.Parse(string.Empty))
+            {
+                Console.WriteLine(department.Capacity);
+            }
+            else
+            {
+                newDepartment.Capacity = department.Capacity;
+            }
         }
     }
 }

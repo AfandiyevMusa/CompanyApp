@@ -6,14 +6,21 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="CompanyApp/Controllers/EmployeeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CompanyApp/Program.cs">
     <Files>
-      <File FileName="CompanyApp/Controllers/EmployeeController.cs" Line="32" Column="18" />
-      <File FileName="CompanyApp/Controllers/DepartmentController.cs" Line="126" Column="29" />
-      <File FileName="ServiceLayer/Services/DepartmentService.cs" Line="60" Column="41" />
-      <File FileName="ServiceLayer/Helpers/Constants/ErrorMessage.cs" Line="27" Column="29" />
-      <File FileName="ServiceLayer/Services/EmployeeService.cs" Line="62" Column="89" />
-      <File FileName="RepositoryLayer/Repositories/EmployeeRepository.cs" Line="27" Column="31" />
+      <File FileName="CompanyApp/Controllers/DepartmentController.cs" Line="88" Column="44" />
+      <File FileName="ServiceLayer/Helpers/Constants/ErrorMessage.cs" />
+      <File FileName="CompanyApp/Controllers/EmployeeController.cs" Line="1" Column="1" />
+      <File FileName="ServiceLayer/Services/EmployeeService.cs" Line="1" Column="1" />
+      <File FileName="ServiceLayer/Services/DepartmentService.cs" Line="11" Column="49" />
+      <File FileName="DomainLayer/Entities/Department.cs" Line="1" Column="1" />
+      <File FileName="RepositoryLayer/Repositories/DepartmentRepository.cs" Line="39" Column="10" />
+      <File FileName="RepositoryLayer/Repositories/Interfaces/IRepository.cs" Line="1" Column="1" />
+      <File FileName="RepositoryLayer/Repositories/EmployeeRepository.cs" Line="1" Column="1" />
+      <File FileName="ServiceLayer/Services/Interfaces/IEmployeeService.cs" Line="1" Column="1" />
+      <File FileName="ServiceLayer/Services/Interfaces/IDepartmentService.cs" Line="11" Column="34" />
+      <File FileName="DomainLayer/Entities/Employee.cs" Line="1" Column="1" />
+      <File FileName="CompanyApp/Program.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,6 +29,7 @@
             <Node name="CompanyApp" expanded="True">
               <Node name="Dependencies" expanded="True" />
               <Node name="Controllers" expanded="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
             <Node name="DomainLayer" expanded="True">
               <Node name="Common" expanded="True" />

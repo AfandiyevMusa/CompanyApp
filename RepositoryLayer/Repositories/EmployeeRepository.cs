@@ -29,10 +29,54 @@ namespace RepositoryLayer.Repositories
             return predicate == null ? AppDbContext<Employee>.datas : AppDbContext<Employee>.datas.FindAll(predicate);
         }
 
-        public List<Employee> Update(Employee entity)
+        public void Update(Employee newEmp)
         {
-            if (entity == null) throw new ArgumentNullException();
-            return AppDbContext<Employee>.datas;
+            var employee = Get(n => n.Id == newEmp.Id);
+
+            if (newEmp.Name == string.Empty)
+            {
+                newEmp.Name = employee.Name;
+            }
+            else
+            {
+                employee.Name = newEmp.Name;
+            }
+
+            if (newEmp.Surname == string.Empty)
+            {
+                newEmp.Surname = employee.Surname;
+            }
+            else
+            {
+                employee.Surname = newEmp.Surname;
+            }
+
+            //if (newEmp.Age == null)
+            //{
+            //    newEmp.Age = employee.Age;
+            //}
+            //else
+            //{
+                employee.Age = newEmp.Age;
+            //}
+
+            if (newEmp.Address == string.Empty)
+            {
+                newEmp.Address = employee.Address;
+            }
+            else
+            {
+                employee.Address = newEmp.Address;
+            }
+
+            //if (newEmp.Department == null)
+            //{
+            //    newEmp.Department = employee.Department;
+            //}
+            //else
+            //{
+                employee.Department = newEmp.Department;
+            //}
         }
     }
 }

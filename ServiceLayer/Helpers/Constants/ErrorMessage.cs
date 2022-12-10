@@ -26,6 +26,6 @@ namespace ServiceLayer.Helpers.Constants
         public const string EmpAgeShouldBeNum = "Please, add new Employee Age as number not words: ";
         public const string EmpIdShouldBeNum = "Please, add new Employee ID as number not words: ";
         public const string NoEmployee = "There isn't Employee to update!";
-
+        public const string NoEmpWithThisDepId = "There isn't Employee with this Department ID";
     }
 }

@@ -26,20 +26,10 @@ namespace ServiceLayer.Services
             return department;
         }
 
-        public List<Department> Update(int? id, Department department)
+        public void Update(int? id, Department department)
         {
-            var res = _DepartRepo.Update(department);
-
-            foreach(var eachDepartment in res)
-            {
-                if (eachDepartment.Id == id)
-                {
-                    eachDepartment.Name = department.Name;
-                    eachDepartment.Capacity = department.Capacity;
-                    break;
-                }
-            }
-            return res;
+            department.Id = id;
+            _DepartRepo.Update(department);
         }
 
         public void Delete(int? id)

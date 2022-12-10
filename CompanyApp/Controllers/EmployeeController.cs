@@ -56,12 +56,12 @@ namespace CompanyApp.Controllers
                                     int newAge;
                                     bool isParse = int.TryParse(age, out newAge);
 
-                                    if (isParse && newAge >= 18)
+                                    if (isParse && (newAge >= 18 && newAge <= 70))
                                     {
                                         ConsoleColor.Yellow.WriteWithColor("Enter employee address: ");
                                     Address: string? address = Console.ReadLine();
 
-                                        if (address.Length >= 3)
+                                        if (Regex.IsMatch(address, @"[A-Z]{1}[a-z0-9!@#$%ˆ&*()_+{}:;<>?/\]]") && address.Length >= 3)
                                         {
                                             var res = _empService.GetAllEmpByDepID(newID).Count;
 
@@ -116,7 +116,7 @@ namespace CompanyApp.Controllers
                         }
                         else
                         {
-                            throw new NotFoundException(ErrorMessage.DepIdNotFound);
+                            throw new NotFoundException(ErrorMessage.NoEmpWithThisDepId);
                         }
                     }
                     else
@@ -163,12 +163,12 @@ namespace CompanyApp.Controllers
                                     ConsoleColor.Yellow.WriteWithColor("Enter new Employee Name: ");
                                 Name: string? name = Console.ReadLine().Replace(" ", "");
 
-                                    if (Regex.IsMatch(name, @"^[A-Z]{1}[a-z]+$") && name != "" && name.Length >= 3)
+                                    if ((Regex.IsMatch(name, @"^[A-Z]{1}[a-z]+$") && name.Length >=3) || name == string.Empty)
                                     {
                                         ConsoleColor.Yellow.WriteWithColor("Enter new Employee Surname: ");
                                     Surname: string? surname = Console.ReadLine();
 
-                                        if (Regex.IsMatch(surname, @"^[A-Z]{1}[a-z]+$") && surname != "" && surname.Length >= 3)
+                                        if ((Regex.IsMatch(surname, @"^[A-Z]{1}[a-z]+$") && surname.Length >= 3) || surname == string.Empty)
                                         {
                                             ConsoleColor.Yellow.WriteWithColor("Enter Employee Age: ");
                                         Age: string? empAge = Console.ReadLine();
@@ -178,9 +178,9 @@ namespace CompanyApp.Controllers
                                             ConsoleColor.Yellow.WriteWithColor("Enter new Employee Address: ");
                                         Department: string? address = Console.ReadLine();
 
-                                            if (isParseAge && newEmpAge >= 18)
+                                            if (isParseAge && (newEmpAge >= 18 && newEmpAge <= 70))
                                             {
-                                                if (address.Length >= 3)
+                                                if ((Regex.IsMatch(address, @"^[A-Z]{1}[a-z]+$") && address.Length >= 3) || address == string.Empty)
                                                 {
                                                     Department department = _depService.GetDepByID(newDepID);
 
@@ -193,9 +193,7 @@ namespace CompanyApp.Controllers
                                                         Department = department
                                                     };
                                                     if (employee is null) throw new ArgumentNullException();
-                                                    var res = _empService.Update(newEmpID, employee);
-
-                                                    if (res is null) throw new ArgumentNullException();
+                                                    _empService.Update(newEmpID, employee);
                                                     ConsoleColor.Cyan.WriteWithColor(ErrorMessage.Updated);
                                                 }
                                                 else
@@ -233,11 +231,11 @@ namespace CompanyApp.Controllers
                                 goto depID;
                             }
 
-                            
+
                         }
                         else
                         {
-                            throw new NotFoundException(ErrorMessage.DepIdNotFound);
+                            throw new NotFoundException(ErrorMessage.NoEmpWithThisDepId);
                         }
                     }
                     else
@@ -289,7 +287,7 @@ namespace CompanyApp.Controllers
                         }
                         else
                         {
-                            throw new NotFoundException(ErrorMessage.DepIdNotFound);
+                            throw new NotFoundException(ErrorMessage.NoEmpWithThisDepId);
                         }
                     }
                     else
@@ -330,7 +328,7 @@ namespace CompanyApp.Controllers
                         }
                         else
                         {
-                            throw new NotFoundException(ErrorMessage.DepIdNotFound);
+                            throw new NotFoundException(ErrorMessage.NoEmpWithThisDepId);
                         }
                     }
                     else
@@ -432,7 +430,7 @@ namespace CompanyApp.Controllers
                         }
                         else
                         {
-                            throw new NotFoundException(ErrorMessage.DepIdNotFound);
+                            throw new NotFoundException(ErrorMessage.NoEmpWithThisDepId);
                         }
                         
                     }

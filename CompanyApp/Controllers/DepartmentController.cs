@@ -86,9 +86,7 @@ namespace CompanyApp.Controllers
                                     Capacity = newUpdatedCapacity
                                 };
                                 if (department is null) throw new ArgumentNullException();
-                                var res = _departmentService.Update(newDepID, department);
-
-                                if (res is null) throw new ArgumentNullException();
+                                _departmentService.Update(newDepID, department);
                                 ConsoleColor.Cyan.WriteWithColor(ErrorMessage.Updated);
                             }
                             else
