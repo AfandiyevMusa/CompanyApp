@@ -20,6 +20,7 @@ namespace ServiceLayer.Helpers.Constants
         public const string CorrectAge = "Age must be between 18 and 70! Try again: ";
         public const string CorrectID = "Please, add correct ID: ";
         public const string CorrectDepartment = "Please, add correct department: ";
+        public const string CorrectAddress = "Please, add correct Address: ";
         public const string Updated = "Updated!!!";
         public const string Deleted = "Deleted!!!";
         public const string DepIdShouldBeNum = "Please, add new Department ID as number not words: ";

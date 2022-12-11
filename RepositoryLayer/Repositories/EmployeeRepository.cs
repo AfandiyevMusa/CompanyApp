@@ -34,7 +34,7 @@ namespace RepositoryLayer.Repositories
         {
             var employee = Get(n => n.Id == newEmp.Id);
 
-            if (newEmp.Name == string.Empty || Regex.IsMatch(newEmp.Name, @"^[\s]+$"))
+            if (newEmp.Name == string.Empty)
             {
                 newEmp.Name = employee.Name;
             }
@@ -43,7 +43,7 @@ namespace RepositoryLayer.Repositories
                 employee.Name = newEmp.Name;
             }
 
-            if (newEmp.Surname == string.Empty || Regex.IsMatch(newEmp.Surname, @"^[\s]+$"))
+            if (newEmp.Surname == string.Empty)
             {
                 newEmp.Surname = employee.Surname;
             }
@@ -61,7 +61,7 @@ namespace RepositoryLayer.Repositories
                 employee.Age = newEmp.Age;
             }
 
-            if (newEmp.Address == string.Empty || Regex.IsMatch(newEmp.Address, @"^[\s]+$"))
+            if (newEmp.Address == string.Empty)
             {
                 newEmp.Address = employee.Address;
             }

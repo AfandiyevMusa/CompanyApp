@@ -91,7 +91,7 @@ namespace CompanyApp.Controllers
                                         }
                                         else
                                         {
-                                            ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectDepartment);
+                                            ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectAddress);
                                             goto Address;
                                         }
                                     }
@@ -226,7 +226,6 @@ namespace CompanyApp.Controllers
                                     if ((Regex.IsMatch(address, @"^[A-Z]{1}[a-z]+$") && address.Length >= 3) || address == string.Empty)
                                     {
                                         if (employee is null) throw new ArgumentNullException();
-
                                     }
                                     else
                                     {
@@ -512,12 +511,13 @@ namespace CompanyApp.Controllers
                     ConsoleColor.Yellow.WriteWithColor("Enter employee name: ");
                 Name: string? name = Console.ReadLine().Replace(" ", "");
 
-                    if (name != "" && name.Length >= 3)
+                    if (name != "" && name.Length >= 1)
                     {
                         ConsoleColor.Yellow.WriteWithColor("Enter employee surname: ");
                     Surname: string? surname = Console.ReadLine().Replace(" ", "");
 
-                        if (surname != "" && surname.Length >= 3)
+                        if (surname != "" && surname.Length >= 1
+                            )
                         {
                             var res = _empService.Search(name, surname);
                             if (res.Count != 0)
