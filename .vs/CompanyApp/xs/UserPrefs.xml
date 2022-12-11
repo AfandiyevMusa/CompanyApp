@@ -1,26 +1,25 @@
 ﻿<Properties StartupConfiguration="{9203A2CB-E6B2-454D-AA4C-4A841C1757EA}|Default">
+  <MonoDevelop.Ide.ItemProperties.CompanyApp PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/afandiyevmusa/Desktop/CodeAcademy/VisualStudio/C#-HW/CompanyApp/ServiceLayer/Services/DepartmentService.cs" relfile="ServiceLayer/Services/DepartmentService.cs" line="31" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.CompanyApp PreferredExecutionTarget="MonoDevelop.Default" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="CompanyApp/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CompanyApp/Controllers/DepartmentController.cs">
     <Files>
-      <File FileName="CompanyApp/Controllers/DepartmentController.cs" Line="88" Column="44" />
+      <File FileName="CompanyApp/Program.cs" Line="82" Column="23" IsPinned="True" />
+      <File FileName="ServiceLayer/Services/DepartmentService.cs" />
+      <File FileName="RepositoryLayer/Repositories/DepartmentRepository.cs" Line="44" Column="46" />
+      <File FileName="CompanyApp/Controllers/DepartmentController.cs" Line="81" Column="42" />
+      <File FileName="CompanyApp/Controllers/EmployeeController.cs" />
+      <File FileName="ServiceLayer/Services/EmployeeService.cs" />
+      <File FileName="RepositoryLayer/Repositories/EmployeeRepository.cs" Line="54" Column="13" />
+      <File FileName="ServiceLayer/Services/Interfaces/IEmployeeService.cs" />
       <File FileName="ServiceLayer/Helpers/Constants/ErrorMessage.cs" />
-      <File FileName="CompanyApp/Controllers/EmployeeController.cs" Line="1" Column="1" />
-      <File FileName="ServiceLayer/Services/EmployeeService.cs" Line="1" Column="1" />
-      <File FileName="ServiceLayer/Services/DepartmentService.cs" Line="11" Column="49" />
-      <File FileName="DomainLayer/Entities/Department.cs" Line="1" Column="1" />
-      <File FileName="RepositoryLayer/Repositories/DepartmentRepository.cs" Line="39" Column="10" />
-      <File FileName="RepositoryLayer/Repositories/Interfaces/IRepository.cs" Line="1" Column="1" />
-      <File FileName="RepositoryLayer/Repositories/EmployeeRepository.cs" Line="1" Column="1" />
-      <File FileName="ServiceLayer/Services/Interfaces/IEmployeeService.cs" Line="1" Column="1" />
-      <File FileName="ServiceLayer/Services/Interfaces/IDepartmentService.cs" Line="11" Column="34" />
-      <File FileName="DomainLayer/Entities/Employee.cs" Line="1" Column="1" />
-      <File FileName="CompanyApp/Program.cs" Line="1" Column="1" />
+      <File FileName="RepositoryLayer/Repositories/Interfaces/IRepository.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -29,7 +28,6 @@
             <Node name="CompanyApp" expanded="True">
               <Node name="Dependencies" expanded="True" />
               <Node name="Controllers" expanded="True" />
-              <Node name="Program.cs" selected="True" />
             </Node>
             <Node name="DomainLayer" expanded="True">
               <Node name="Common" expanded="True" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Linq;
 using DomainLayer.Entities;
 using RepositoryLayer.Datas;
 using RepositoryLayer.Exceptions;
@@ -19,7 +20,7 @@ namespace CompanyApp.Controllers
 
 		public void Create() //(1)
 		{
-			try
+            try
 			{
 				ConsoleColor.Yellow.WriteWithColor("Enter department name: ");
 				string? name = Console.ReadLine();
@@ -37,10 +38,9 @@ namespace CompanyApp.Controllers
                     Capacity = newDepCapacity
                 };
 
-                if (isParse)
+                if (isParse && newDepCapacity > 0)
 				{
-					var result = _departmentService.Create(department);
-
+                    var result = _departmentService.Create(department);
                     ConsoleColor.Green.WriteWithColor($"Id: {result.Id}, Name: {result.Name}, Capacity: {result.Capacity}");
                 }
 				else
@@ -66,34 +66,44 @@ namespace CompanyApp.Controllers
                     int newDepID;
                     bool isParse = int.TryParse(depID, out newDepID);
 
+                    Department department = new();
+
                     if (isParse)
                     {
                         if(_departmentService.GetDepByID(newDepID) != null)
                         {
                             ConsoleColor.Yellow.WriteWithColor("Enter new department Name: ");
                             string? name = Console.ReadLine();
+                            department.Name = name;
 
                             ConsoleColor.Yellow.WriteWithColor("Enter new department Capacity: ");
                         NewCapacity: string? updatedCapacity = Console.ReadLine();
                             int newUpdatedCapacity;
-                            bool isParseID = int.TryParse(updatedCapacity, out newUpdatedCapacity);
-
-                            if (isParseID)
+                            
+                            if(updatedCapacity == "")
                             {
-                                Department department = new()
-                                {
-                                    Name = name,
-                                    Capacity = newUpdatedCapacity
-                                };
-                                if (department is null) throw new ArgumentNullException();
-                                _departmentService.Update(newDepID, department);
-                                ConsoleColor.Cyan.WriteWithColor(ErrorMessage.Updated);
+                                newUpdatedCapacity = 0;
                             }
                             else
                             {
-                                ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.NewCapacityMessage);
-                                goto NewCapacity;
+                                bool isParseCap = int.TryParse(updatedCapacity, out newUpdatedCapacity);
+
+                                if (isParseCap)
+                                {
+                                    
+                                    department.Capacity = newUpdatedCapacity;
+
+                                    if (department is null) throw new ArgumentNullException();
+                                    
+                                }
+                                else
+                                {
+                                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.NewCapacityMessage);
+                                    goto NewCapacity;
+                                }
                             }
+                            _departmentService.Update(newDepID, department);
+                            ConsoleColor.Cyan.WriteWithColor(ErrorMessage.Updated);
                         }
                         else
                         {

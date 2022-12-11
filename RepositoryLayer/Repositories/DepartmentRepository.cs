@@ -40,14 +40,14 @@ namespace RepositoryLayer.Repositories
             {
                 department.Name = newDepartment.Name;
             }
-            
-            if(newDepartment.Capacity == int.Parse(string.Empty))
+
+            if (newDepartment.Capacity == 0)
             {
-                Console.WriteLine(department.Capacity);
+                newDepartment.Capacity = department.Capacity;
             }
             else
             {
-                newDepartment.Capacity = department.Capacity;
+                department.Capacity = newDepartment.Capacity;
             }
         }
     }

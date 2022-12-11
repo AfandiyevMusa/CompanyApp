@@ -51,14 +51,14 @@ namespace RepositoryLayer.Repositories
                 employee.Surname = newEmp.Surname;
             }
 
-            //if (newEmp.Age == null)
-            //{
-            //    newEmp.Age = employee.Age;
-            //}
-            //else
-            //{
+            if (newEmp.Age == 0)
+            {
+                newEmp.Age = employee.Age;
+            }
+            else
+            {
                 employee.Age = newEmp.Age;
-            //}
+            }
 
             if (newEmp.Address == string.Empty)
             {
@@ -69,14 +69,14 @@ namespace RepositoryLayer.Repositories
                 employee.Address = newEmp.Address;
             }
 
-            //if (newEmp.Department == null)
-            //{
-            //    newEmp.Department = employee.Department;
-            //}
-            //else
-            //{
+            if (newEmp.Department == null)
+            {
+                newEmp.Department = employee.Department;
+            }
+            else
+            {
                 employee.Department = newEmp.Department;
-            //}
+            }
         }
     }
 }

@@ -15,7 +15,6 @@ namespace CompanyApp.Controllers
 {
 	public class EmployeeController
 	{
-        private readonly DepartmentController _depController;
         private readonly DepartmentService _depService;
         private readonly EmployeeService _empService;
 
@@ -147,91 +146,105 @@ namespace CompanyApp.Controllers
                     int newEmpID;
                     bool isParseEmpID = int.TryParse(empID, out newEmpID);
 
+                    Employee employee = new();
+
                     if (isParseEmpID)
                     {
                         if (_depService.GetDepByID(newEmpID) != null)
                         {
+                            
                             ConsoleColor.Yellow.WriteWithColor("Enter new Department ID: ");
                         depID: string? departmentID = Console.ReadLine();
                             int newDepID;
-                            bool isParseDepID = int.TryParse(departmentID, out newDepID);
 
-                            if (isParseDepID)
+                            if (departmentID == "")
                             {
-                                if (_depService.GetDepByID(newDepID) != null)
+                                newDepID = 0;
+                            }
+                            else
+                            {
+                                bool isParseDepID = int.TryParse(departmentID, out newDepID);
+                                if (isParseDepID)
                                 {
-                                    ConsoleColor.Yellow.WriteWithColor("Enter new Employee Name: ");
-                                Name: string? name = Console.ReadLine().Replace(" ", "");
-
-                                    if ((Regex.IsMatch(name, @"^[A-Z]{1}[a-z]+$") && name.Length >=3) || name == string.Empty)
+                                    if (_depService.GetDepByID(newDepID) != null)
                                     {
-                                        ConsoleColor.Yellow.WriteWithColor("Enter new Employee Surname: ");
-                                    Surname: string? surname = Console.ReadLine();
-
-                                        if ((Regex.IsMatch(surname, @"^[A-Z]{1}[a-z]+$") && surname.Length >= 3) || surname == string.Empty)
-                                        {
-                                            ConsoleColor.Yellow.WriteWithColor("Enter Employee Age: ");
-                                        Age: string? empAge = Console.ReadLine();
-                                            int newEmpAge;
-                                            bool isParseAge = int.TryParse(empAge, out newEmpAge);
-
-                                            ConsoleColor.Yellow.WriteWithColor("Enter new Employee Address: ");
-                                        Department: string? address = Console.ReadLine();
-
-                                            if (isParseAge && (newEmpAge >= 18 && newEmpAge <= 70))
-                                            {
-                                                if ((Regex.IsMatch(address, @"^[A-Z]{1}[a-z]+$") && address.Length >= 3) || address == string.Empty)
-                                                {
-                                                    Department department = _depService.GetDepByID(newDepID);
-
-                                                    Employee employee = new()
-                                                    {
-                                                        Name = name,
-                                                        Surname = surname,
-                                                        Age = newEmpAge,
-                                                        Address = address,
-                                                        Department = department
-                                                    };
-                                                    if (employee is null) throw new ArgumentNullException();
-                                                    _empService.Update(newEmpID, employee);
-                                                    ConsoleColor.Cyan.WriteWithColor(ErrorMessage.Updated);
-                                                }
-                                                else
-                                                {
-                                                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectDepartment);
-                                                    goto Department;
-                                                }
-                                            }
-                                            else
-                                            {
-                                                ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.EmpAgeShouldBeNum);
-                                                goto Age;
-                                            }
-                                        }
-                                        else
-                                        {
-                                            ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectSurname);
-                                            goto Surname;
-                                        }
+                                        Department department = _depService.GetDepByID(newDepID);
+                                        employee.Department = department; 
                                     }
                                     else
                                     {
-                                        ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectName);
-                                        goto Name;
+                                        throw new NotFoundException(ErrorMessage.DepIdNotFound);
                                     }
                                 }
                                 else
                                 {
-                                    throw new NotFoundException(ErrorMessage.DepIdNotFound);
+                                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.DepIdShouldBeNum);
+                                    goto depID;
+                                }
+                            }
+
+                            ConsoleColor.Yellow.WriteWithColor("Enter new Employee Name: ");
+                        Name: string? name = Console.ReadLine().Replace(" ", "");
+
+                            if ((Regex.IsMatch(name, @"^[A-Z]{1}[a-z]+$") && name.Length >= 3) || name == string.Empty)
+                            {
+                                employee.Name = name;
+
+                                ConsoleColor.Yellow.WriteWithColor("Enter new Employee Surname: ");
+                            Surname: string? surname = Console.ReadLine();
+
+                                if ((Regex.IsMatch(surname, @"^[A-Z]{1}[a-z]+$") && surname.Length >= 3) || surname == string.Empty)
+                                {
+                                    employee.Surname = surname;
+
+                                    ConsoleColor.Yellow.WriteWithColor("Enter Employee Age: ");
+                                Age: string? empAge = Console.ReadLine();
+                                    int newEmpAge;
+
+                                    if (empAge == "")
+                                    {
+                                        newEmpAge = 0;
+                                    }
+                                    else
+                                    {
+                                        bool isParseAge = int.TryParse(empAge, out newEmpAge);
+
+                                        if (isParseAge && (newEmpAge >= 18 && newEmpAge <= 70))
+                                        {
+                                            employee.Age = newEmpAge;
+                                        }
+                                        else
+                                        {
+                                            ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.EmpAgeShouldBeNum);
+                                            goto Age;
+                                        }
+                                    }
+                                    ConsoleColor.Yellow.WriteWithColor("Enter new Employee Address: ");
+                                Department: string? address = Console.ReadLine();
+                                    employee.Address = address;
+
+                                    if ((Regex.IsMatch(address, @"^[A-Z]{1}[a-z]+$") && address.Length >= 3) || address == string.Empty)
+                                    {
+                                        if (employee is null) throw new ArgumentNullException();
+
+                                    }
+                                    else
+                                    {
+                                        ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectDepartment);
+                                        goto Department;
+                                    }
+                                }
+                                else
+                                {
+                                    ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectSurname);
+                                    goto Surname;
                                 }
                             }
                             else
                             {
-                                ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.DepIdShouldBeNum);
-                                goto depID;
+                                ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.CorrectName);
+                                goto Name;
                             }
-
-
                         }
                         else
                         {
@@ -243,6 +256,8 @@ namespace CompanyApp.Controllers
                         ConsoleColor.DarkRed.WriteWithColor(ErrorMessage.EmpIdShouldBeNum);
                         goto empID;
                     }
+                    _empService.Update(newEmpID, employee);
+                    ConsoleColor.Cyan.WriteWithColor(ErrorMessage.Updated);
                 }
                 else
                 {
