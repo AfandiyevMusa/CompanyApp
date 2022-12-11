@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using DomainLayer.Entities;
 using RepositoryLayer.Datas;
@@ -23,8 +24,12 @@ namespace CompanyApp.Controllers
             try
 			{
 				ConsoleColor.Yellow.WriteWithColor("Enter department name: ");
-				string? name = Console.ReadLine();
-
+				Name: string? name = Console.ReadLine();
+                if (name == string.Empty)
+                {
+                    ConsoleColor.DarkRed.WriteWithColor("Department shouldn't be empty!");
+                    goto Name;
+                }
 				ConsoleColor.Yellow.WriteWithColor("Enter department capacity: ");
                 Capacity:  string? depCapacity = Console.ReadLine();
 
@@ -80,7 +85,7 @@ namespace CompanyApp.Controllers
                         NewCapacity: string? updatedCapacity = Console.ReadLine();
                             int newUpdatedCapacity;
                             
-                            if(updatedCapacity == "")
+                            if(updatedCapacity == "" || Regex.IsMatch(updatedCapacity, @"^[\s]+$"))
                             {
                                 newUpdatedCapacity = 0;
                             }
@@ -196,7 +201,7 @@ namespace CompanyApp.Controllers
             }
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.Message);
+                ConsoleColor.DarkRed.WriteWithColor(ex.Message);
 			}
 		}
 

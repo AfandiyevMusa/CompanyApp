@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using DomainLayer.Entities;
 using RepositoryLayer.Datas;
 using RepositoryLayer.Repositories.Interfaces;
@@ -33,7 +34,7 @@ namespace RepositoryLayer.Repositories
         {
             var employee = Get(n => n.Id == newEmp.Id);
 
-            if (newEmp.Name == string.Empty)
+            if (newEmp.Name == string.Empty || Regex.IsMatch(newEmp.Name, @"^[\s]+$"))
             {
                 newEmp.Name = employee.Name;
             }
@@ -42,7 +43,7 @@ namespace RepositoryLayer.Repositories
                 employee.Name = newEmp.Name;
             }
 
-            if (newEmp.Surname == string.Empty)
+            if (newEmp.Surname == string.Empty || Regex.IsMatch(newEmp.Surname, @"^[\s]+$"))
             {
                 newEmp.Surname = employee.Surname;
             }
@@ -60,7 +61,7 @@ namespace RepositoryLayer.Repositories
                 employee.Age = newEmp.Age;
             }
 
-            if (newEmp.Address == string.Empty)
+            if (newEmp.Address == string.Empty || Regex.IsMatch(newEmp.Address, @"^[\s]+$"))
             {
                 newEmp.Address = employee.Address;
             }

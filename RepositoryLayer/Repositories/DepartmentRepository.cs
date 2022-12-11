@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using DomainLayer.Entities;
 using RepositoryLayer.Datas;
 using RepositoryLayer.Repositories.Interfaces;
@@ -32,7 +33,7 @@ namespace RepositoryLayer.Repositories
         public void Update(Department newDepartment)
         {
             var department = Get(n => n.Id == newDepartment.Id);
-            if (newDepartment.Name == string.Empty)
+            if (newDepartment.Name == string.Empty || Regex.IsMatch(newDepartment.Name, @"^[\s]+$"))
             {
                 newDepartment.Name = department.Name;
             }
